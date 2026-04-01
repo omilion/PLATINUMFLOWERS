@@ -1,4 +1,5 @@
 import { Pool } from 'pg';
+import crypto from 'crypto';
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
@@ -24,7 +25,6 @@ export default async function handler(req, res) {
         `);
 
         // Hasheo muy simple usando buffer (Node nativo) para llave única
-        const crypto = require('crypto');
         const hash = crypto.createHash('sha256').update(text).digest('hex');
 
         // Buscar en Caché Neon Database
