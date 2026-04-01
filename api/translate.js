@@ -39,25 +39,32 @@ export default async function handler(req, res) {
         console.log("CACHE MISS, CALLING GEMINI: " + type);
         
         const apiKey = process.env.GEMINI_API_KEY;
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
         
         // Contextualizar el prompt en base a si es HTML (descripción de blog/producto) o solo Título.
         const prompt = type === 'html' 
             ? `Translate this HTML content to English exactly as is. Keep all tags, attributes, links, and structure perfectly intact. Only translate the human readable text inside the tags. Output ONLY the translated HTML: ${text}`
             : `Translate this title/short phrase to English for a luxury flowers exporter catalog. Keep it professional. Output ONLY the translation, no quotes, no markdown: ${text}`;
 
-        const aiResponse = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: prompt }] }]
-            })
-        });
+        const models = ['gemini-3-flash-preview', 'gemini-3.1-flash-lite-preview', 'gemini-2.5-flash'];
+        let aiData = null;
 
-        const aiData = await aiResponse.json();
-        
-        if (!aiData.candidates || aiData.candidates.length === 0) {
-            throw new Error('Gemini API returned empty response: ' + JSON.stringify(aiData));
+        for (const model of models) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+            console.log(`Trying model: ${model}`);
+            const aiResponse = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+            });
+            if (aiResponse.ok) {
+                aiData = await aiResponse.json();
+                break;
+            }
+            console.warn(`Model ${model} returned ${aiResponse.status}, trying next...`);
+        }
+
+        if (!aiData || !aiData.candidates || aiData.candidates.length === 0) {
+            throw new Error('All Gemini models failed or returned empty: ' + JSON.stringify(aiData));
         }
 
         let translated = aiData.candidates[0].content.parts[0].text.trim();
