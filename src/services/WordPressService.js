@@ -7,116 +7,99 @@ const CK = 'ck_54b6ae9c673e99423a63118a57d0a1f2c820e2fc';
 const CS = 'cs_b9b522441f6a34e704f11dd35f1376c86c94db94';
 
 /**
- * Helper to handle session caching
+ * Cliente seguro Vercel->Neon->Gemini
  */
-const withCache = async (key, fetcher) => {
-  const cached = sessionStorage.getItem(key);
+const translateText = async (text, type = 'text') => {
+  if (!text) return text;
+  try {
+      const res = await axios.post('/api/translate', { text, type });
+      return res.data.translation || text;
+  } catch(e) {
+      console.warn("AI Proxy Failed, falling back to ES:", e);
+      return text;
+  }
+};
+
+const tProduct = async (p) => {
+    const p2 = {...p};
+    [p2.name, p2.short_description, p2.description] = await Promise.all([
+        translateText(p.name, 'text'),
+        translateText(p.short_description, 'html'),
+        translateText(p.description, 'html')
+    ]);
+    return p2;
+}
+
+const tPost = async (p) => {
+    const p2 = {...p, title: {...p.title}, excerpt: {...p.excerpt}, content: {...p.content}};
+    [p2.title.rendered, p2.excerpt.rendered, p2.content.rendered] = await Promise.all([
+        translateText(p.title.rendered, 'text'),
+        translateText(p.excerpt.rendered, 'html'),
+        translateText(p.content.rendered, 'html')
+    ]);
+    return p2;
+}
+
+/**
+ * Helper to handle session caching & AI Translation Wrapping
+ */
+const withCache = async (key, fetcher, translatorWrapper) => {
+  const lang = localStorage.getItem('platinium_lang') || 'es';
+  const finalKey = lang === 'en' ? `${key}_en` : key;
+
+  const cached = sessionStorage.getItem(finalKey);
   if (cached) {
     try {
       return JSON.parse(cached);
     } catch (e) {
-      console.warn(`Cache error for ${key}:`, e);
+      console.warn(`Cache error for ${finalKey}:`, e);
     }
   }
 
-  const data = await fetcher();
-  sessionStorage.setItem(key, JSON.stringify(data));
+  let data = await fetcher();
+  
+  if (lang === 'en' && translatorWrapper) {
+      data = await translatorWrapper(data);
+  }
+
+  sessionStorage.setItem(finalKey, JSON.stringify(data));
   return data;
 };
 
 const WordPressService = {
-  /**
-   * Obtiene los productos de WooCommerce (con caché de sesión)
-   */
   getProducts: async () => {
     return withCache('wc_products_cache', async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/wc/v3/products`, {
-          params: {
-            consumer_key: CK,
-            consumer_secret: CS,
-            per_page: 50
-          }
-        });
-        return response.data;
-      } catch (error) {
-        console.error('Error fetching WC products:', error.response?.data || error.message);
-        throw error;
-      }
-    });
+      const response = await axios.get(`${BASE_URL}/wc/v3/products`, { params: { consumer_key: CK, consumer_secret: CS, per_page: 50 } });
+      return response.data;
+    }, async (data) => Promise.all(data.map(tProduct)));
   },
 
-  /**
-   * Obtiene un producto individual por ID (con caché)
-   */
   getProduct: async (id) => {
     return withCache(`wc_product_cache_${id}`, async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/wc/v3/products/${id}`, {
-          params: {
-            consumer_key: CK,
-            consumer_secret: CS
-          }
-        });
-        return response.data;
-      } catch (error) {
-        console.error(`Error fetching WC product ${id}:`, error.response?.data || error.message);
-        throw error;
-      }
-    });
+      const response = await axios.get(`${BASE_URL}/wc/v3/products/${id}`, { params: { consumer_key: CK, consumer_secret: CS } });
+      return response.data;
+    }, async (data) => tProduct(data));
   },
 
-  /**
-   * Obtiene las noticias del blog (con caché de sesión e imágenes embebidas)
-   */
   getBlogPosts: async () => {
     return withCache('wp_blog_posts_cache', async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/wp/v2/posts?_embed=true`);
-        return response.data;
-      } catch (error) {
-        console.error('Error fetching WP blog posts:', error.response?.data || error.message);
-        throw error;
-      }
-    });
+      const response = await axios.get(`${BASE_URL}/wp/v2/posts?_embed=true`);
+      return response.data;
+    }, async (data) => Promise.all(data.map(tPost)));
   },
 
-  /**
-   * Obtiene un post individual del blog por ID (con caché e imágenes embebidas)
-   */
   getPost: async (id) => {
     return withCache(`wp_blog_post_cache_${id}`, async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/wp/v2/posts/${id}?_embed=true`);
-        return response.data;
-      } catch (error) {
-        console.error(`Error fetching WP post ${id}:`, error.response?.data || error.message);
-        throw error;
-      }
-    });
+      const response = await axios.get(`${BASE_URL}/wp/v2/posts/${id}?_embed=true`);
+      return response.data;
+    }, async (data) => tPost(data));
   },
 
-  /**
-   * Envía un formulario de contacto a través de Contact Form 7 (REST API)
-   * Requiere el ID del formulario configurado en WordPress.
-   */
   submitContact: async (formData, formId = '123') => {
-    try {
-      const data = new FormData();
-      Object.keys(formData).forEach(key => {
-        data.append(key, formData[key]);
-      });
-
-      const response = await axios.post(`${BASE_URL}/contact-form-7/v1/contact-forms/${formId}/feedback`, data, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      return response.data;
-    } catch (error) {
-      console.error('Error submitting contact form:', error.response?.data || error.message);
-      throw error;
-    }
+    const data = new FormData();
+    Object.keys(formData).forEach(key => data.append(key, formData[key]));
+    const response = await axios.post(`${BASE_URL}/contact-form-7/v1/contact-forms/${formId}/feedback`, data);
+    return response.data;
   }
 };
 

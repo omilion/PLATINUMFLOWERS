@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Menu, X, ShoppingBag, Globe } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Header = () => {
+    const { language, toggleLanguage } = useLanguage();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation();
@@ -14,8 +16,11 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const navItems = [{ n: 'Inicio', p: '/' }, { n: 'Catálogo', p: '/catalogo' }, { n: 'Blog', p: '/blog' }, { n: 'Contacto', p: '/contacto' }];
-    const isDarkBgPage = location.pathname === '/' || location.pathname === '/catalogo' || location.pathname === '/contacto' || location.pathname.startsWith('/blog');
+    // Diccionario Bilingüe en Vivo
+    const navItems = language === 'es' 
+        ? [{ n: 'Inicio', p: '/' }, { n: 'Catálogo', p: '/catalogo' }, { n: 'Blog', p: '/blog' }, { n: 'Contacto', p: '/contacto' }]
+        : [{ n: 'Home', p: '/' }, { n: 'Catalog', p: '/catalogo' }, { n: 'Journal', p: '/blog' }, { n: 'Contact', p: '/contacto' }];
+    const isDarkBgPage = location.pathname === '/' || location.pathname === '/catalogo' || location.pathname === '/contacto' || location.pathname.startsWith('/blog') || location.pathname.startsWith('/producto');
     const headerColor = (isDarkBgPage && !isScrolled) ? 'white' : 'var(--color-primary)';
 
     return (
@@ -61,11 +66,23 @@ const Header = () => {
                 </nav>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                     <button 
+                        onClick={toggleLanguage} 
+                        style={{ 
+                            background: 'transparent', 
+                            border: '1px solid ' + (isDarkBgPage && !isScrolled ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.1)'), 
+                            color: isDarkBgPage && !isScrolled ? 'white' : 'var(--color-primary)', 
+                            padding: '6px 12px', borderRadius: '30px', cursor: 'pointer',
+                            display: 'flex', alignItems: 'center', gap: '5px', fontSize: '0.75rem', fontWeight: 700
+                        }}
+                     >
+                        <Globe size={14} /> {language.toUpperCase()}
+                     </button>
                      <Link to="/catalogo" className="btn-pro" style={{ 
                         padding: '12px 28px', fontSize: '0.75rem', display: 'none',
                         background: isDarkBgPage && !isScrolled ? 'white' : 'var(--color-primary)',
                         color: isDarkBgPage && !isScrolled ? 'var(--color-primary)' : 'white'
-                     }} id="cta-d">Comprar ahora</Link>
+                     }} id="cta-d">{language === 'es' ? 'Comprar ahora' : 'Pre-Order Now'}</Link>
                      <button onClick={() => setIsMenuOpen(!isMenuOpen)} style={{ 
                         background: headerColor, 
                         border: 'none', 

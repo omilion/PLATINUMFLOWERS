@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import WordPressService from '../services/WordPressService';
-import { ArrowLeft, MessageCircle, Info, Check, ShieldCheck, Truck, ChevronRight } from 'lucide-react';
+import { ArrowLeft, MessageCircle, Info, Check, ShieldCheck, Truck, ChevronRight, ChevronLeft, X } from 'lucide-react';
 import Header from '../components/Header';
 import ProductCarousel from '../components/ProductCarousel';
 const ProductPage = () => {
@@ -84,7 +84,17 @@ const ProductPage = () => {
     return (
         <>
             <Header />
-            <main style={{ background: 'var(--color-bg)', paddingTop: '120px', paddingBottom: '100px' }}>
+            <main style={{ background: 'var(--color-bg)', paddingTop: 0, paddingBottom: '100px' }}>
+                {/* Thin Hero Banner exclusive for Nav bar overlap context */}
+                <div style={{ position: 'relative', width: '100%', height: '160px', marginBottom: '40px', overflow: 'hidden' }}>
+                    <img 
+                        src="/HERO%20SINGLE%20PRODUCT%20(Grande).webp" 
+                        alt="Flor de Exportación Peonías" 
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }} 
+                    />
+                    <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(0,0,0,0.55)' }} />
+                </div>
+                
                 <div className="container">
 
                     {/* Breadcrumbs */}
@@ -278,7 +288,7 @@ const ProductPage = () => {
                 )}
             </main>
 
-            {/* Lightbox Modal */}
+            {/* Lightbox Modal Interactivo */}
             <AnimatePresence>
                 {isLightboxOpen && (
                     <motion.div
@@ -298,12 +308,43 @@ const ProductPage = () => {
                             cursor: 'zoom-out'
                         }}
                     >
-                        <motion.img
-                            initial={{ scale: 0.8, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            src={product.images[activeImage]?.src}
-                            style={{ maxWidth: '100%', maxHeight: '100%', borderRadius: '20px', boxShadow: '0 0 50px rgba(0,245,212,0.2)' }}
-                        />
+                        {/* Controles Navigacionales */}
+                        {product.images.length > 1 && (
+                            <>
+                                <button 
+                                    onClick={(e) => { e.stopPropagation(); setActiveImage(prev => prev === 0 ? product.images.length - 1 : prev - 1); }}
+                                    style={{ position: 'absolute', left: '20px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '50%', padding: '15px', color: 'white', cursor: 'pointer', zIndex: 10, backdropFilter: 'blur(5px)' }}
+                                >
+                                    <ChevronLeft size={35} />
+                                </button>
+                                <button 
+                                    onClick={(e) => { e.stopPropagation(); setActiveImage(prev => prev === product.images.length - 1 ? 0 : prev + 1); }}
+                                    style={{ position: 'absolute', right: '20px', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '50%', padding: '15px', color: 'white', cursor: 'pointer', zIndex: 10, backdropFilter: 'blur(5px)' }}
+                                >
+                                    <ChevronRight size={35} />
+                                </button>
+                            </>
+                        )}
+                        
+                        <button 
+                            onClick={(e) => { e.stopPropagation(); setIsLightboxOpen(false); }}
+                            style={{ position: 'absolute', top: '25px', right: '30px', background: 'rgba(0,0,0,0.5)', border: 'none', borderRadius: '50%', padding: '10px', color: 'white', cursor: 'pointer', zIndex: 10 }}
+                        >
+                            <X size={30} />
+                        </button>
+
+                        <AnimatePresence mode="wait">
+                            <motion.img
+                                key={activeImage}
+                                initial={{ scale: 0.9, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                exit={{ scale: 0.9, opacity: 0 }}
+                                transition={{ duration: 0.2 }}
+                                src={product.images[activeImage]?.src}
+                                onClick={(e) => e.stopPropagation()}
+                                style={{ maxWidth: '100%', maxHeight: '100%', borderRadius: '15px', cursor: 'default' }}
+                            />
+                        </AnimatePresence>
                     </motion.div>
                 )}
             </AnimatePresence>
