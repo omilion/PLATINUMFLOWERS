@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Platinium Flowers: Cultivamos las más lindas peonías en el lugar más espectacular; La Patagonia. Calidad de exportación directamente desde el frío prístino.">
+    <title>Petunias | Platinium Flowers - Belleza Patagónica</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="index.css">
+    
+    <style>
+        /* Additional Layout Styles for WOW effect */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition-smooth);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(29, 45, 65, 0.4), rgba(87, 75, 65, 0.4)), 
+                        url('assets/images/hero-platinium.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: var(--color-white);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        .section-padding {
+            padding: 100px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--color-accent);
+        }
+
+        .variedades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--color-white);
+            transition: var(--transition-smooth);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-img {
+            height: 200px;
+            background-color: var(--color-accent); /* Placeholder */
+            position: relative;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 60px 20px;
+        }
+
+        /* Glass Utility usage */
+        .header-glass {
+            background: rgba(213, 208, 191, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header id="main-header" class="header-glass">
+        <div class="header-content">
+            <a href="#" class="logo">Platinium <span style="font-weight: 300;">Flowers</span></a>
+            <nav>
+                <a href="#catalogo" class="btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Ver Catálogo</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Belleza de la Patagonia</h1>
+                <p>Cultivamos las más lindas peonías en climas extremos para exportar frescura al mundo.</p>
+                <a href="#catalogo" class="btn-primary">Descubrir Variedades</a>
+            </div>
+        </section>
+
+        <section id="catalogo" class="section-padding container">
+            <div class="section-title">
+                <h2>Nuestras Variedades</h2>
+                <p>Flores de corte de gran calidad y rizomas seleccionados.</p>
+            </div>
+
+            <div class="variedades-grid">
+                <!-- Sarah Bernhardt -->
+                <div class="card animate-fade">
+                    <div class="card-img" style="background: url('assets/images/sarah-bernhardt.jpg') center/cover;"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sarah Bernhardt</h3>
+                        <p class="card-desc">Rosa suave clásica, la más popular del mundo.</p>
+                    </div>
+                </div>
+
+                <!-- Coral Charm -->
+                <div class="card" data-aos>
+                    <div class="card-img" style="background: url('assets/images/coral-charm.jpg') center/cover;"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Coral Charm</h3>
+                        <p class="card-desc">Cambia mágicamente de color coral intenso a marfil.</p>
+                    </div>
+                </div>
+
+                <!-- Duchesse de Nemours -->
+                <div class="card" data-aos>
+                    <div class="card-img"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Duchesse de Nemours</h3>
+                        <p class="card-desc">Blanca cremosa, fragancia cítrica exquisita.</p>
+                    </div>
+                </div>
+
+                <!-- Kansas -->
+                <div class="card" data-aos>
+                    <div class="card-img"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Kansas</h3>
+                        <p class="card-desc">Rojo magenta brillante que cautiva miradas.</p>
+                    </div>
+                </div>
+
+                <!-- Alexander Fleming -->
+                <div class="card" data-aos>
+                    <div class="card-img"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Alexander Fleming</h3>
+                        <p class="card-desc">Peonía rosa intensa, muy fragante.</p>
+                    </div>
+                </div>
+
+                <!-- Monsieur Jules Elie -->
+                <div class="card" data-aos>
+                    <div class="card-img"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Monsieur Jules Elie</h3>
+                        <p class="card-desc">Rosa pálido plateado, forma de bomba clásica.</p>
+                    </div>
+                </div>
+
+                <!-- Paul M. Wild -->
+                <div class="card" data-aos>
+                    <div class="card-img"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Paul M. Wild</h3>
+                        <p class="card-desc">Rojo intenso que no se decolora con el sol.</p>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn-outline">Ver Todas las Variedades</a>
+            </div>
+        </section>
+
+        <!-- FAQs Section -->
+        <section id="faqs" class="section-padding" style="background: var(--color-background);">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Preguntas Frecuentes</h2>
+                </div>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="faq-item" data-aos>
+                        <div class="faq-question">¿Cómo abrir las flores más rápido? <span>+</span></div>
+                        <div class="faq-answer">Para abrir las flores más rápido, puedes ponerlas en agua tibia con una cucharadita de azúcar.</div>
+                    </div>
+                    <div class="faq-item" data-aos>
+                        <div class="faq-question">Duración en florero <span>+</span></div>
+                        <div class="faq-answer">Las peonías duran aproximadamente 5-6 días en florero si se mantienen en un lugar fresco y se les cambia el agua regularmente.</div>
+                    </div>
+                    <div class="faq-item" data-aos>
+                        <div class="faq-question">Mantenimiento en frío <span>+</span></div>
+                        <div class="faq-answer">Es fundamental mantener las flores en frío para asegurar su frescura durante el transporte y almacenamiento.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="section-padding container">
+            <div class="section-title">
+                <h2>Noticias y Consejos</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="blog-card" data-aos>
+                    <h3 class="card-title">Dormancia y Horas de Frío</h3>
+                    <p class="card-desc">Descubre cómo el clima extremo de la Patagonia regula el ciclo vital de nuestras peonías.</p>
+                    <a href="#" style="color: var(--color-accent); text-decoration: none; font-weight: 600;">Leer más →</a>
+                </div>
+                <div class="blog-card" data-aos>
+                    <h3 class="card-title">El Rizoma de Peonía</h3>
+                    <p class="card-desc">Guía completa sobre la estructura y plantación de los mejores rizomas de la región.</p>
+                    <a href="#" style="color: var(--color-accent); text-decoration: none; font-weight: 600;">Leer más →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" style="background: var(--color-white);">
+            <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
+                <div>
+                    <img src="assets/images/nosotros-platinium.jpg" alt="Cultivo en la Patagonia" style="width: 100%; border-radius: 20px; box-shadow: var(--shadow-soft);">
+                </div>
+                <div>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Cultivamos en Sintonía con la Tierra</h2>
+                    <p style="margin-bottom: 20px;">Bajo fuertes condiciones climáticas, prístinas aguas y frío intenso, cada temporada exportamos al mundo nuestras flores.</p>
+                    <p>Nuestra disponibilidad va desde la última semana de Noviembre hasta mediados de Enero, aprovechando la floración tardía única de la Patagonia Chilena.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-glass');
+                header.style.padding = '10px 0';
+            } else {
+                header.style.padding = '20px 0';
+            }
+        });
+    </script>
+</body>
+</html>

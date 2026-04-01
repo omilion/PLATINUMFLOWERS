@@ -1,0 +1,151 @@
+:root {
+    /* Paleta de la Marca (Basada en los HEX definidos por la diseñadora) */
+    --color-primary: #1D2D41;    /* Sombra Profunda (Navy Patagónico) */
+    --color-secondary: #574B41;  /* Tierra Húmeda (Umber) */
+    --color-accent: #A2B4C0;     /* Cielo de la Patagonia (Slate Blue) */
+    --color-background: #D5D0BF; /* Arena Suave (Cream/Beige) */
+    
+    /* Variaciones y Utilidades */
+    --color-text: #1D2D41;
+    --color-text-muted: #574B41;
+    --color-surface: rgba(213, 208, 191, 0.7); /* Para Glassmorphism */
+    --color-white: #FFFFFF;
+    
+    /* Tipografía */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
+    /* Sombras y Efectos */
+    --shadow-soft: 0 10px 30px rgba(29, 45, 65, 0.1);
+    --shadow-strong: 0 20px 40px rgba(29, 45, 65, 0.15);
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --glass-bg: rgba(213, 208, 191, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* Glassmorphism Utility */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+}
+
+/* Scroll Animations */
+[data-aos] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition-smooth);
+}
+
+[data-aos].active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Base Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* Button Foundation */
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 12px 24px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: var(--color-secondary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-strong);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--color-primary);
+    padding: 12px 24px;
+    border-radius: 50px;
+    border: 2px solid var(--color-primary);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-outline:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* FAQ Accordion Styles */
+.faq-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-accent);
+    padding-bottom: 20px;
+}
+
+.faq-question {
+    font-weight: 600;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-answer {
+    margin-top: 10px;
+    color: var(--color-text-muted);
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+/* Blog Styles */
+.blog-card {
+    background: var(--color-white);
+    padding: 30px;
+    border-radius: 16px;
+    border-left: 5px solid var(--color-accent);
+    transition: var(--transition-smooth);
+}
+
+.blog-card:hover {
+    border-left-color: var(--color-primary);
+    transform: translateX(10px);
+}
