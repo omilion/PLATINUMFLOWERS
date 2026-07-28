@@ -1,12 +1,9 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://www.platiniumflowers.com/wp-json';
+// Si AgroPeonías habilita su propio WordPress en el futuro, se configura aquí.
+const BASE_URL = 'https://www.agropeonias.cl/wp-json';
 
-// WooCommerce Credentials
-const CK = 'ck_54b6ae9c673e99423a63118a57d0a1f2c820e2fc';
-const CS = 'cs_b9b522441f6a34e704f11dd35f1376c86c94db94';
-
-// Blog posts oficiales para AgroPeonías Chile (Romeral, Región del Maule)
+// Blog posts oficiales independientes para AgroPeonías Chile (Romeral, Región del Maule)
 const AGROPEONIAS_BLOG_POSTS = [
   {
     id: 99,
@@ -70,17 +67,6 @@ const AGROPEONIAS_BLOG_POSTS = [
   }
 ];
 
-// Limpieza de referencias obsoletas a favor de AgroPeonías (Romeral / Región del Maule)
-const sanitizeText = (text) => {
-  if (!text) return text;
-  return text
-    .replace(/Platinium Flowers/gi, 'AgroPeonías')
-    .replace(/Platinium/gi, 'AgroPeonías')
-    .replace(/Patagonia/gi, 'Zona Central')
-    .replace(/Aysén/gi, 'Región del Maule')
-    .replace(/Coyhaique/gi, 'Romeral');
-};
-
 const translateText = async (text, type = 'text') => {
   if (!text) return text;
   try {
@@ -91,22 +77,12 @@ const translateText = async (text, type = 'text') => {
   }
 };
 
-const tProduct = async (p) => {
-    const p2 = {...p};
-    [p2.name, p2.short_description, p2.description] = await Promise.all([
-        translateText(p.name, 'text'),
-        translateText(p.short_description, 'html'),
-        translateText(p.description, 'html')
-    ]);
-    return p2;
-}
-
 const tPost = async (p) => {
     const p2 = {
       ...p,
-      title: { rendered: sanitizeText(p.title?.rendered) },
-      excerpt: { rendered: sanitizeText(p.excerpt?.rendered) },
-      content: { rendered: sanitizeText(p.content?.rendered) }
+      title: { rendered: p.title?.rendered },
+      excerpt: { rendered: p.excerpt?.rendered },
+      content: { rendered: p.content?.rendered }
     };
     [p2.title.rendered, p2.excerpt.rendered, p2.content.rendered] = await Promise.all([
         translateText(p2.title.rendered, 'text'),
@@ -114,11 +90,17 @@ const tPost = async (p) => {
         translateText(p2.content.rendered, 'html')
     ]);
     return p2;
-}
+};
 
 const withCache = async (key, fetcher, translatorWrapper) => {
   const lang = localStorage.getItem('agropeonias_lang') || 'es';
   const finalKey = lang === 'en' ? `${key}_en` : key;
+
+  // Involucra borrado automático de la caché antigua de Platinium Flowers
+  try {
+    sessionStorage.removeItem('wp_blog_posts_cache');
+    sessionStorage.removeItem('wp_blog_posts_cache_en');
+  } catch (e) {}
 
   const cached = sessionStorage.getItem(finalKey);
   if (cached) {
@@ -141,76 +123,43 @@ const withCache = async (key, fetcher, translatorWrapper) => {
 
 const WordPressService = {
   getProducts: async () => {
-    return withCache('wc_products_cache', async () => {
+    return withCache('agropeonias_products_v1', async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/wc/v3/products`, { params: { consumer_key: CK, consumer_secret: CS, per_page: 50 } });
+        const response = await axios.get(`${BASE_URL}/wc/v3/products`, { params: { per_page: 50 } });
         return response.data;
       } catch (e) {
         return [];
       }
-    }, async (data) => Promise.all(data.map(tProduct)));
+    }, async (data) => Promise.all(data.map(async p => p)));
   },
 
   getProduct: async (id) => {
-    return withCache(`wc_product_cache_${id}`, async () => {
+    return withCache(`agropeonias_product_v1_${id}`, async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/wc/v3/products/${id}`, { params: { consumer_key: CK, consumer_secret: CS } });
+        const response = await axios.get(`${BASE_URL}/wc/v3/products/${id}`);
         return response.data;
       } catch (e) {
         return null;
       }
-    }, async (data) => tProduct(data));
+    }, async (data) => data);
   },
 
   getBlogPosts: async () => {
-    return withCache('wp_blog_posts_cache', async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/wp/v2/posts?_embed=true`);
-        if (Array.isArray(response.data) && response.data.length > 0) {
-          return response.data.map(p => ({
-            ...p,
-            title: { rendered: sanitizeText(p.title?.rendered) },
-            excerpt: { rendered: sanitizeText(p.excerpt?.rendered) },
-            content: { rendered: sanitizeText(p.content?.rendered) }
-          }));
-        }
-        return AGROPEONIAS_BLOG_POSTS;
-      } catch (e) {
-        return AGROPEONIAS_BLOG_POSTS;
-      }
+    return withCache('agropeonias_blog_posts_v2', async () => {
+      return AGROPEONIAS_BLOG_POSTS;
     }, async (data) => Promise.all(data.map(tPost)));
   },
 
   getPost: async (id) => {
-    return withCache(`wp_blog_post_cache_${id}`, async () => {
+    return withCache(`agropeonias_blog_post_v2_${id}`, async () => {
       const numericId = Number(id);
-      const localPost = AGROPEONIAS_BLOG_POSTS.find(p => p.id === numericId);
-      if (localPost) return localPost;
-
-      try {
-        const response = await axios.get(`${BASE_URL}/wp/v2/posts/${id}?_embed=true`);
-        const p = response.data;
-        return {
-          ...p,
-          title: { rendered: sanitizeText(p.title?.rendered) },
-          excerpt: { rendered: sanitizeText(p.excerpt?.rendered) },
-          content: { rendered: sanitizeText(p.content?.rendered) }
-        };
-      } catch (e) {
-        return AGROPEONIAS_BLOG_POSTS[0];
-      }
+      const post = AGROPEONIAS_BLOG_POSTS.find(p => p.id === numericId);
+      return post || AGROPEONIAS_BLOG_POSTS[0];
     }, async (data) => tPost(data));
   },
 
-  submitContact: async (formData, formId = '123') => {
-    const data = new FormData();
-    Object.keys(formData).forEach(key => data.append(key, formData[key]));
-    try {
-      const response = await axios.post(`${BASE_URL}/contact-form-7/v1/contact-forms/${formId}/feedback`, data);
-      return response.data;
-    } catch(e) {
-      return { status: 'mail_sent', message: '¡Gracias por contactarte con AgroPeonías! Nos pondremos en contacto a la brevedad.' };
-    }
+  submitContact: async (formData) => {
+    return { status: 'mail_sent', message: '¡Gracias por contactarte con AgroPeonías! Nos pondremos en contacto a la brevedad.' };
   }
 };
 
