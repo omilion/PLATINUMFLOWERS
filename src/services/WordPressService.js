@@ -9,6 +9,16 @@ const CS = 'cs_b9b522441f6a34e704f11dd35f1376c86c94db94';
 // Blog posts oficiales para AgroPeonías Chile (Romeral, Región del Maule)
 const AGROPEONIAS_BLOG_POSTS = [
   {
+    id: 99,
+    date: '2025-12-12T12:00:00',
+    title: { rendered: 'Floricultura Nacional y su Crecimiento Sostenido: Consuelo Callejas en Reporte Agrícola' },
+    excerpt: { rendered: '<p>Consuelo Callejas, Directora de AgroPeonías, fue entrevistada en el programa Reporte Agrícola por José Ignacio Atenas sobre el auge de las peonías en Chile y la profesionalización del rubro.</p>' },
+    content: { rendered: '<h2>Reporte Agrícola: Floricultura Nacional y Crecimiento Sostenido</h2><p>En un nuevo episodio del destacado programa de televisión y plataforma agro <strong>Reporte Agrícola</strong>, el periodista y conductor <strong>José Ignacio Atenas</strong> entrevistó a <strong>Consuelo Callejas</strong>, Directora de <strong>AgroPeonías</strong> y referente de la Asociación Gremial de Peonías del Valle Central, para analizar el sostenido crecimiento de la floricultura en Chile y los grandes desafíos del sector.</p><h2>Panorama de la Floricultura en Chile</h2><p>Actualmente, la floricultura en Chile cuenta con aproximadamente <strong>2.000 hectáreas plantadas</strong> distribuidas en tres grandes segmentos: la floricultura rural (que representa la mayoría del territorio), la floricultura de exportación de alta gama y la engorda de bulbos y rizomas en el sur del país.</p><figure style="text-align: center; margin: 35px 0;"><img src="/agropeonias_reporte_agricola_body.webp" alt="Consuelo Callejas en Reporte Agrícola" style="max-width: 100%; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);" /><figcaption style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">Consuelo Callejas, Directora de AgroPeonías, durante su entrevista en Reporte Agrícola.</figcaption></figure><h2>Un Gremio Liderado por Mujeres Profesionalizando el Rubro</h2><p>Consuelo Callejas explicó que, aunque Chile es mundialmente reconocido por excelencia como país exportador frutícola, la floricultura ha ido ganando espacio de forma consistente. Este importante auge responde en gran medida al liderazgo de un gremio impulsado por mujeres productoras que buscan aumentar el consumo nacional y profesionalizar el mercado.</p><blockquote>"Hemos metido bulla porque queremos aumentar el consumo nacional de peonías. Las banqueteras y los floristas conocen la peonía, pero no conocen en qué semana sale, qué color, dónde se producen o qué cantidad pueden comprar."<br><small>— Consuelo Callejas, Directora de AgroPeonías</small></blockquote><h2>Estructuración de Mercado y Educación al Cliente</h2><p>El desafío central para AgroPeonías es educar al mercado local: informar las fechas exactas de floración en el Valle del Maule, las variedades disponibles por semana y garantizar una cadena logística transparente y directa desde el huerto.</p>' },
+    _embedded: {
+      'wp:featuredmedia': [{ source_url: '/agropeonias_reporte_agricola_feat.webp' }]
+    }
+  },
+  {
     id: 100,
     date: '2025-12-23T12:00:00',
     title: { rendered: 'Chile Escala 16 Puestos en Ranking Global de Exportadores de Flores: AgroPeonías en DF Regiones' },
