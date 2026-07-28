@@ -33,7 +33,7 @@ const Home = () => {
                         <button style={{ position: 'absolute', top: '20px', right: '20px', background: 'none', border: 'none', color: 'white', cursor: 'pointer' }}>
                             <X size={40} />
                         </button>
-                        <img src="/home%20parallax.webp" alt="Banner Institucional" style={{ maxWidth: '95vw', maxHeight: '95vh', objectFit: 'contain' }} />
+                        <img src="/agropeonias_banner_inicio.webp" alt="Banner Institucional" style={{ maxWidth: '95vw', maxHeight: '95vh', objectFit: 'contain' }} />
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -103,7 +103,7 @@ const Home = () => {
             <section style={{ width: '100%', marginTop: '40px', marginBottom: '40px', background: 'var(--color-bg)', display: 'flex', justifyContent: 'center', padding: '0 20px' }}>
                 <div className="banner-institucional" onClick={() => setIsLightboxOpen(true)}>
                     <img 
-                        src="/home%20parallax.webp" 
+                        src="/agropeonias_banner_inicio.webp" 
                         alt="Banner AgroPeonías" 
                         style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
                     />
