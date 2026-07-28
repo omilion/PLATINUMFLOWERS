@@ -3,6 +3,164 @@ import axios from 'axios';
 // Si AgroPeonías habilita su propio WordPress en el futuro, se configura aquí.
 const BASE_URL = 'https://www.agropeonias.cl/wp-json';
 
+// Catálogo completo de productos oficial para AgroPeonías Chile (Romeral, Región del Maule)
+const AGROPEONIAS_PRODUCTS = [
+  {
+    id: 1,
+    name: 'Sarah Bernhardt',
+    slug: 'sarah-bernhardt',
+    short_description: 'Rosa suave clásica, la peonía más popular y cotizada del mundo por su elegancia y fragancia única.',
+    description: 'La peonía Sarah Bernhardt es el ícono indiscutido de las peonías de corte. Presenta pétalos dobles en un delicado tono rosa suave con destellos plateados. Ideal para ramos de novia, eventos de lujo y arreglos florales sofisticados. Cosechada en nuestro predio de Romeral.',
+    price: '3500',
+    regular_price: '3500',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/peonias%20chile%20-%20Peonies.webp' }, { src: '/RAMO%20PEONIAS.webp' }]
+  },
+  {
+    id: 2,
+    name: 'Coral Charm',
+    slug: 'coral-charm',
+    short_description: 'Impresionante variedad que transforma mágicamente su color de coral vibrante a un marfil crema suave.',
+    description: 'Coral Charm destaca por su forma semi-doble y su espectacular evolución de color. Al abrirse, despliega tonos salmón y coral que gradualmente transicionan hacia un elegante marfil. Cosechada en Romeral, Región del Maule.',
+    price: '3800',
+    regular_price: '3800',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/RAMO%20PEONIAS.webp' }, { src: '/home%20hero.webp' }]
+  },
+  {
+    id: 3,
+    name: 'Bowl of Cream',
+    slug: 'bowl-of-cream',
+    short_description: 'Espectaculares flores dobles de color blanco puro cremoso de gran tamaño y forma majestuosa.',
+    description: 'Bowl of Cream hace honor a su nombre con enormes inflorescencias de pétalos cremosos de blanco puro. Una variedad de lujo cotizada internacionalmente para alta banquetería y arreglos de gran impacto.',
+    price: '4000',
+    regular_price: '4000',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/CAJA%20PEONIAS.webp' }, { src: '/HERO%20SINGLE%20PRODUCT%20(Grande).webp' }]
+  },
+  {
+    id: 4,
+    name: 'Duchesse de Nemours',
+    slug: 'duchesse-de-nemours',
+    short_description: 'Blanca cremosa clásica con toque verdoso al centro y una exquisita fragancia cítrica.',
+    description: 'Una de las variedades blancas más antiguas y apreciadas en la floricultura mundial. Destaca por su aroma fresco cítrico y la delicadeza de sus pétalos compactos.',
+    price: '3500',
+    regular_price: '3500',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/HERO%20SINGLE%20PRODUCT%20(Grande).webp' }]
+  },
+  {
+    id: 5,
+    name: 'Alexander Fleming',
+    slug: 'alexander-fleming',
+    short_description: 'Peonía rosa intensa y profunda con una fragancia dulce muy marcada.',
+    description: 'Variedad de pétalos rosa vivaz con centros rizados y aroma envolvente. Excelente desempeño en florero y gran vida útil tras el corte.',
+    price: '3600',
+    regular_price: '3600',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/RAMO%20PEONIAS.webp' }]
+  },
+  {
+    id: 6,
+    name: 'Kansas',
+    slug: 'kansas',
+    short_description: 'Rojo magenta brillante e intenso que mantiene su color firme sin desteñir.',
+    description: 'Kansas impresiona por su potente tono rojo fucsia/magenta con pétalos dobles sobre tallos firmes y erguidos. Aporta vitalidad y contraste único en cualquier composición.',
+    price: '3700',
+    regular_price: '3700',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/home%20hero%202.webp' }]
+  },
+  {
+    id: 7,
+    name: 'Red Charm',
+    slug: 'red-charm',
+    short_description: 'Rojo profundo encendido en forma de bomba perfecta y textura aterciopelada.',
+    description: 'Red Charm es galardonada mundialmente por su forma esférica tipo bomba de pétalos rojo escarlata súper densos. Una variedad de categoría premium.',
+    price: '4200',
+    regular_price: '4200',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/peonias%20chile%20-%20Peonies.webp' }]
+  },
+  {
+    id: 8,
+    name: 'Monsieur Jules Elie',
+    slug: 'monsieur-jules-elie',
+    short_description: 'Rosa pálido plateado en forma de bomba con pétalos exteriores sedosos.',
+    description: 'Clásica variedad francesa con flores gigantes de rosa pálido con visos plateados. Sus pétalos interiores forman un domo espeso de gran belleza.',
+    price: '3600',
+    regular_price: '3600',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/RAMO%20PEONIAS.webp' }]
+  },
+  {
+    id: 9,
+    name: 'Paul M. Wild',
+    slug: 'paul-m-wild',
+    short_description: 'Rojo rubí velvet deslumbrante que conserva su intensidad intacta al abrir.',
+    description: 'Hermosa peonía roja de pétalos aterciopelados y floración tardía que amplía la temporada comercial con la máxima calidad.',
+    price: '3800',
+    regular_price: '3800',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/home%20hero%202.webp' }]
+  },
+  {
+    id: 10,
+    name: 'Immaculae',
+    slug: 'immaculae',
+    short_description: 'Blanca pura cristalina, ideal para arreglos nupciales e interiorismo.',
+    description: 'Flores de un blanco inmaculado y textura sedosa. Su elegancia sobria la convierte en la favorita para decoradores de eventos de gala.',
+    price: '3700',
+    regular_price: '3700',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/CAJA%20PEONIAS.webp' }]
+  },
+  {
+    id: 11,
+    name: 'Pecher',
+    slug: 'pecher',
+    short_description: 'Blanca marfil suave con delicados trazos rojos/carmesí en el centro.',
+    description: 'Una de las peonías más delicadas y románticas. Presenta pétalos cremosos sutilmente matizados con pequeñas pinceladas rojas.',
+    price: '3600',
+    regular_price: '3600',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/HERO%20SINGLE%20PRODUCT%20(Grande).webp' }]
+  },
+  {
+    id: 12,
+    name: 'Rizoma Alexander Fleming',
+    slug: 'rizoma-alexander-fleming',
+    short_description: 'Rizoma vigoroso de peonía rosa fragante listo para plantación de temporada.',
+    description: 'Rizoma seleccionado de la variedad Alexander Fleming cosechado en nuestro campo de Romeral. Garantiza yemas sanas con alto poder germinativo para cultivar en tu jardín.',
+    price: '7500',
+    regular_price: '7500',
+    categories: [{ id: 2, name: 'Rizomas', slug: 'rizomas' }],
+    images: [{ src: '/RAMO%20PEONIAS.webp' }]
+  },
+  {
+    id: 13,
+    name: 'Rizoma Sarah Bernhardt',
+    slug: 'rizoma-sarah-bernhardt',
+    short_description: 'Rizoma de alta calidad de la variedad rosa clásica más icónica.',
+    description: 'Cultiva tus propias peonías Sarah Bernhardt. Rizomas vigorosos preparados bajo estándares técnicos de refrigeración y sanidad vegetal.',
+    price: '7900',
+    regular_price: '7900',
+    categories: [{ id: 2, name: 'Rizomas', slug: 'rizomas' }],
+    images: [{ src: '/peonias%20chile%20-%20Peonies.webp' }]
+  },
+  {
+    id: 14,
+    name: 'Rizoma Coral Charm',
+    slug: 'rizoma-coral-charm',
+    short_description: 'Rizoma seleccionado de la codiciada variedad cambiante de coral a marfil.',
+    description: 'Rizoma de peonía Coral Charm para plantación entre mayo y junio en la Zona Central. Excelente desarrollo vegetativo y floración en primavera.',
+    price: '8500',
+    regular_price: '8500',
+    categories: [{ id: 2, name: 'Rizomas', slug: 'rizomas' }],
+    images: [{ src: '/RAMO%20PEONIAS.webp' }]
+  }
+];
+
 // Blog posts oficiales independientes para AgroPeonías Chile (Romeral, Región del Maule)
 const AGROPEONIAS_BLOG_POSTS = [
   {
@@ -106,10 +264,10 @@ const withCache = async (key, fetcher, translatorWrapper) => {
   const lang = localStorage.getItem('agropeonias_lang') || 'es';
   const finalKey = lang === 'en' ? `${key}_en` : key;
 
-  // Involucra borrado automático de la caché antigua de Platinium Flowers
+  // Involucra borrado automático de cachés antiguas
   try {
     sessionStorage.removeItem('wp_blog_posts_cache');
-    sessionStorage.removeItem('wp_blog_posts_cache_en');
+    sessionStorage.removeItem('wc_products_cache');
   } catch (e) {}
 
   const cached = sessionStorage.getItem(finalKey);
@@ -133,35 +291,27 @@ const withCache = async (key, fetcher, translatorWrapper) => {
 
 const WordPressService = {
   getProducts: async () => {
-    return withCache('agropeonias_products_v1', async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/wc/v3/products`, { params: { per_page: 50 } });
-        return response.data;
-      } catch (e) {
-        return [];
-      }
-    }, async (data) => Promise.all(data.map(async p => p)));
+    return withCache('agropeonias_products_v3', async () => {
+      return AGROPEONIAS_PRODUCTS;
+    }, async (data) => data);
   },
 
   getProduct: async (id) => {
-    return withCache(`agropeonias_product_v1_${id}`, async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/wc/v3/products/${id}`);
-        return response.data;
-      } catch (e) {
-        return null;
-      }
+    return withCache(`agropeonias_product_v3_${id}`, async () => {
+      const numericId = Number(id);
+      const product = AGROPEONIAS_PRODUCTS.find(p => p.id === numericId || p.slug === id);
+      return product || AGROPEONIAS_PRODUCTS[0];
     }, async (data) => data);
   },
 
   getBlogPosts: async () => {
-    return withCache('agropeonias_blog_posts_v2', async () => {
+    return withCache('agropeonias_blog_posts_v3', async () => {
       return AGROPEONIAS_BLOG_POSTS;
     }, async (data) => Promise.all(data.map(tPost)));
   },
 
   getPost: async (id) => {
-    return withCache(`agropeonias_blog_post_v2_${id}`, async () => {
+    return withCache(`agropeonias_blog_post_v3_${id}`, async () => {
       const numericId = Number(id);
       const post = AGROPEONIAS_BLOG_POSTS.find(p => p.id === numericId);
       return post || AGROPEONIAS_BLOG_POSTS[0];
