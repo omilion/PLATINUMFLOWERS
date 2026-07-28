@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import WordPressService from '../services/WordPressService';
-import { ArrowLeft, MessageCircle, Info, Check, ShieldCheck, Truck, ChevronRight, ChevronLeft, X } from 'lucide-react';
+import { ArrowLeft, MessageCircle, Info, Check, ShieldCheck, Truck, ChevronRight, ChevronLeft, X, Download, FileText } from 'lucide-react';
 import Header from '../components/Header';
 import ProductCarousel from '../components/ProductCarousel';
 const ProductPage = () => {
@@ -13,6 +13,7 @@ const ProductPage = () => {
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
     const [relatedProducts, setRelatedProducts] = useState([]);
     const [randomPost, setRandomPost] = useState(null);
+    const [carouselIndex, setCarouselIndex] = useState(0);
 
     useEffect(() => {
         const fetchAllData = async () => {
@@ -40,7 +41,32 @@ const ProductPage = () => {
         window.scrollTo(0, 0);
     }, [id]);
 
-    const [carouselIndex, setCarouselIndex] = useState(0);
+    const prevImage = (e) => {
+        e.stopPropagation();
+        setActiveImage(prev => prev === 0 ? product.images.length - 1 : prev - 1);
+    };
+
+    const nextImage = (e) => {
+        e.stopPropagation();
+        setActiveImage(prev => prev === product.images.length - 1 ? 0 : prev + 1);
+    };
+
+    const handleKeyDown = (e) => {
+        if (!isLightboxOpen) return;
+        if (e.key === 'ArrowLeft') {
+            setActiveImage(prev => prev === 0 ? product.images.length - 1 : prev - 1);
+        } else if (e.key === 'ArrowRight') {
+            setActiveImage(prev => prev === product.images.length - 1 ? 0 : prev + 1);
+        } else if (e.key === 'Escape') {
+            setIsLightboxOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [isLightboxOpen, product]);
+
     const nextRelated = () => {
         const visibleCols = window.innerWidth < 768 ? 2 : 4;
         const maxIndex = Math.max(0, relatedProducts.length - visibleCols);
@@ -78,8 +104,8 @@ const ProductPage = () => {
 
     if (!product) return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Producto no encontrado</div>;
 
-    const waLink = `https://wa.me/56992990735?text=Hola! Estoy interesado en la peonía: ${product.name} (ID: ${product.id})`;
-    const productFeatures = parseShortDescription(product.short_description);
+    const waLink = `https://wa.me/56942262053?text=Hola! Estoy interesado en la peonía: ${product.name} (ID: ${product.id})`;
+    const productFeatures = product.features || parseShortDescription(product.short_description);
 
     return (
         <>
@@ -225,7 +251,7 @@ const ProductPage = () => {
                                 </div>
                             </div>
 
-                            <div style={{ marginTop: '20px' }}>
+                            <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
                                 <a
                                     href={waLink}
                                     target="_blank"
@@ -236,7 +262,38 @@ const ProductPage = () => {
                                     <MessageCircle size={24} />
                                     Consultar Peonías
                                 </a>
-                                <p style={{ textAlign: 'center', marginTop: '15px', opacity: 0.5, fontSize: '0.8rem' }}>
+
+                                {product.pdf_url && (
+                                    <a
+                                        href={product.pdf_url}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="btn-sec"
+                                        style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            gap: '12px',
+                                            padding: '18px 25px',
+                                            width: '100%',
+                                            fontSize: '1rem',
+                                            backgroundColor: 'rgba(25, 198, 107, 0.08)',
+                                            color: 'var(--color-primary)',
+                                            border: '2px solid rgba(25, 198, 107, 0.3)',
+                                            borderRadius: '50px',
+                                            fontWeight: 600,
+                                            textDecoration: 'none',
+                                            textAlign: 'center',
+                                            transition: 'all 0.3s ease',
+                                            cursor: 'pointer'
+                                        }}
+                                    >
+                                        <FileText size={20} />
+                                        Descargar Ficha Técnica (PDF)
+                                    </a>
+                                )}
+
+                                <p style={{ textAlign: 'center', marginTop: '5px', opacity: 0.5, fontSize: '0.8rem' }}>
                                     *Atención personalizada de exportación.
                                 </p>
                             </div>

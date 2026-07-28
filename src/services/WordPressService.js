@@ -4,6 +4,7 @@ import axios from 'axios';
 const BASE_URL = 'https://www.agropeonias.cl/wp-json';
 
 // Catálogo real extraído directamente de la web oficial de AgroPeonías (https://www.agropeonias.cl/shop)
+// Incluye enlaces a los PDFs de las Fichas Técnicas oficiales y sus características estructuradas.
 const AGROPEONIAS_PRODUCTS = [
   {
     id: 1,
@@ -14,7 +15,16 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3700',
     regular_price: '3700',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_kansas.webp' }, { src: '/ramo_peonias.webp' }]
+    images: [{ src: '/product_kansas.webp' }, { src: '/ramo_peonias.webp' }],
+    pdf_url: 'https://www.agropeonias.cl/_files/ugd/f027d5_235759395d4b4b7d8a30d1eb8650f8df.pdf',
+    features: [
+      { label: 'Color', desc: 'Fucsia Marmoleado' },
+      { label: 'Tamaño Botón', desc: '3.4 cm / 3.5 cm' },
+      { label: 'Largo Tallo', desc: '75 cm' },
+      { label: 'Fragancia', desc: 'Leve' },
+      { label: 'Vida Florero', desc: '10 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 2,
@@ -25,7 +35,16 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3800',
     regular_price: '3800',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_gardenia.webp' }, { src: '/caja_peonias.webp' }]
+    images: [{ src: '/product_gardenia.webp' }, { src: '/caja_peonias.webp' }],
+    pdf_url: 'https://www.agropeonias.cl/_files/ugd/f027d5_3cb08fc903df4f659153cab66a856dcd.pdf',
+    features: [
+      { label: 'Color', desc: 'Blanco Crema' },
+      { label: 'Tamaño Botón', desc: '3.2 cm / 3.4 cm' },
+      { label: 'Largo Tallo', desc: '70 cm' },
+      { label: 'Fragancia', desc: 'Dulce' },
+      { label: 'Vida Florero', desc: '10 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 3,
@@ -36,7 +55,16 @@ const AGROPEONIAS_PRODUCTS = [
     price: '4200',
     regular_price: '4200',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_diana_parks.webp' }]
+    images: [{ src: '/product_diana_parks.webp' }],
+    pdf_url: 'https://www.agropeonias.cl/_files/ugd/f027d5_cc14a1a5bde244d3ad8d7fa023e3e0cb.pdf',
+    features: [
+      { label: 'Color', desc: 'Rojo Escarlata' },
+      { label: 'Tamaño Botón', desc: '3.5 cm' },
+      { label: 'Largo Tallo', desc: '75 cm' },
+      { label: 'Fragancia', desc: 'Suave' },
+      { label: 'Vida Florero', desc: '10 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 4,
@@ -47,7 +75,15 @@ const AGROPEONIAS_PRODUCTS = [
     price: '4500',
     regular_price: '4500',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_etched_salmon.webp' }]
+    images: [{ src: '/product_etched_salmon.webp' }],
+    features: [
+      { label: 'Color', desc: 'Rosa Salmón' },
+      { label: 'Tamaño Botón', desc: '3.3 cm' },
+      { label: 'Largo Tallo', desc: '70 cm' },
+      { label: 'Fragancia', desc: 'Leve' },
+      { label: 'Vida Florero', desc: '10 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 5,
@@ -58,7 +94,15 @@ const AGROPEONIAS_PRODUCTS = [
     price: '4000',
     regular_price: '4000',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_buckeye_belle.webp' }]
+    images: [{ src: '/product_buckeye_belle.webp' }],
+    features: [
+      { label: 'Color', desc: 'Rojo Caoba' },
+      { label: 'Tamaño Botón', desc: '3.2 cm' },
+      { label: 'Largo Tallo', desc: '70 cm' },
+      { label: 'Fragancia', desc: 'Leve' },
+      { label: 'Vida Florero', desc: '9 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 6,
@@ -69,7 +113,15 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3900',
     regular_price: '3900',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_pillow_talk.webp' }]
+    images: [{ src: '/product_pillow_talk.webp' }],
+    features: [
+      { label: 'Color', desc: 'Rosa Pastel' },
+      { label: 'Tamaño Botón', desc: '3.4 cm' },
+      { label: 'Largo Tallo', desc: '75 cm' },
+      { label: 'Fragancia', desc: 'Moderada' },
+      { label: 'Vida Florero', desc: '10 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 7,
@@ -80,7 +132,16 @@ const AGROPEONIAS_PRODUCTS = [
     price: '4300',
     regular_price: '4300',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_henry_bockstoce.webp' }]
+    images: [{ src: '/product_henry_bockstoce.webp' }],
+    pdf_url: 'https://www.agropeonias.cl/_files/ugd/f027d5_c46c92497f234a6396aab28b4cb63234.pdf',
+    features: [
+      { label: 'Color', desc: 'Rojo Carmesí' },
+      { label: 'Tamaño Botón', desc: '3.6 cm' },
+      { label: 'Largo Tallo', desc: '80 cm' },
+      { label: 'Fragancia', desc: 'Leve' },
+      { label: 'Vida Florero', desc: '11 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 8,
@@ -91,7 +152,15 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3700',
     regular_price: '3700',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_fringed_ivory.webp' }]
+    images: [{ src: '/product_fringed_ivory.webp' }],
+    features: [
+      { label: 'Color', desc: 'Blanco Marfil' },
+      { label: 'Tamaño Botón', desc: '3.0 cm' },
+      { label: 'Largo Tallo', desc: '65 cm' },
+      { label: 'Fragancia', desc: 'Leve' },
+      { label: 'Vida Florero', desc: '9 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 9,
@@ -102,7 +171,15 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3800',
     regular_price: '3800',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_florence_nicholls.webp' }]
+    images: [{ src: '/product_florence_nicholls.webp' }],
+    features: [
+      { label: 'Color', desc: 'Blanco Ruborizado' },
+      { label: 'Tamaño Botón', desc: '3.3 cm' },
+      { label: 'Largo Tallo', desc: '75 cm' },
+      { label: 'Fragancia', desc: 'Dulce' },
+      { label: 'Vida Florero', desc: '10 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 10,
@@ -113,7 +190,16 @@ const AGROPEONIAS_PRODUCTS = [
     price: '4000',
     regular_price: '4000',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_coral_sunset.webp' }]
+    images: [{ src: '/product_coral_sunset.webp' }],
+    pdf_url: 'https://www.agropeonias.cl/_files/ugd/f027d5_8f768aebcd6e454dbfe7f97bc871a0cb.pdf',
+    features: [
+      { label: 'Color', desc: 'Coral Dorado / Salmón' },
+      { label: 'Tamaño Botón', desc: '3.4 cm' },
+      { label: 'Largo Tallo', desc: '75 cm' },
+      { label: 'Fragancia', desc: 'Leve' },
+      { label: 'Vida Florero', desc: '10 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 11,
@@ -124,7 +210,15 @@ const AGROPEONIAS_PRODUCTS = [
     price: '4100',
     regular_price: '4100',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_bridal_shower.webp' }]
+    images: [{ src: '/product_bridal_shower.webp' }],
+    features: [
+      { label: 'Color', desc: 'Blanco Nupcial' },
+      { label: 'Tamaño Botón', desc: '3.4 cm' },
+      { label: 'Largo Tallo', desc: '75 cm' },
+      { label: 'Fragancia', desc: 'Dulce' },
+      { label: 'Vida Florero', desc: '10 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 12,
@@ -135,7 +229,16 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3900',
     regular_price: '3900',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_red_sarah_bernhardt.webp' }]
+    images: [{ src: '/product_red_sarah_bernhardt.webp' }],
+    pdf_url: 'https://www.agropeonias.cl/_files/ugd/f027d5_69f25d97f92d47ab8c31e33e71c4e42d.pdf',
+    features: [
+      { label: 'Color', desc: 'Fucsia Rubí' },
+      { label: 'Tamaño Botón', desc: '3.4 cm' },
+      { label: 'Largo Tallo', desc: '75 cm' },
+      { label: 'Fragancia', desc: 'Moderada' },
+      { label: 'Vida Florero', desc: '10 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 13,
@@ -146,7 +249,15 @@ const AGROPEONIAS_PRODUCTS = [
     price: '4100',
     regular_price: '4100',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_peter_brand.webp' }]
+    images: [{ src: '/product_peter_brand.webp' }],
+    features: [
+      { label: 'Color', desc: 'Rojo Purpúreo Oscuro' },
+      { label: 'Tamaño Botón', desc: '3.3 cm' },
+      { label: 'Largo Tallo', desc: '70 cm' },
+      { label: 'Fragancia', desc: 'Leve' },
+      { label: 'Vida Florero', desc: '10 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 14,
@@ -157,7 +268,16 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3500',
     regular_price: '3500',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_sarah_bernhardt.webp' }, { src: '/ramo_peonias.webp' }]
+    images: [{ src: '/product_sarah_bernhardt.webp' }, { src: '/ramo_peonias.webp' }],
+    pdf_url: 'https://www.agropeonias.cl/_files/ugd/f027d5_5082c3d2b05247b6a6867f6198590093.pdf',
+    features: [
+      { label: 'Color', desc: 'Rosa Suave Platinado' },
+      { label: 'Tamaño Botón', desc: '3.4 cm / 3.5 cm' },
+      { label: 'Largo Tallo', desc: '75 cm' },
+      { label: 'Fragancia', desc: 'Leve' },
+      { label: 'Vida Florero', desc: '10 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 15,
@@ -168,7 +288,16 @@ const AGROPEONIAS_PRODUCTS = [
     price: '4200',
     regular_price: '4200',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_red_charm.webp' }]
+    images: [{ src: '/product_red_charm.webp' }],
+    pdf_url: 'https://www.agropeonias.cl/_files/ugd/f027d5_67ea76b877cc4e5e84e3be70d04e8bc8.pdf',
+    features: [
+      { label: 'Color', desc: 'Rojo Terciopelo Escarlata' },
+      { label: 'Tamaño Botón', desc: '3.5 cm' },
+      { label: 'Largo Tallo', desc: '75 cm' },
+      { label: 'Fragancia', desc: 'Leve' },
+      { label: 'Vida Florero', desc: '10 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 16,
@@ -179,7 +308,16 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3800',
     regular_price: '3800',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_coral_charm.webp' }]
+    images: [{ src: '/product_coral_charm.webp' }],
+    pdf_url: 'https://www.agropeonias.cl/_files/ugd/f027d5_3fc9cbf725864e25ad5b0e0ef782e311.pdf',
+    features: [
+      { label: 'Color', desc: 'Coral Salmón / Marfil' },
+      { label: 'Tamaño Botón', desc: '3.4 cm' },
+      { label: 'Largo Tallo', desc: '75 cm' },
+      { label: 'Fragancia', desc: 'Leve' },
+      { label: 'Vida Florero', desc: '10 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 17,
@@ -190,7 +328,16 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3500',
     regular_price: '3500',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_duchesse_de_nemours.webp' }]
+    images: [{ src: '/product_duchesse_de_nemours.webp' }],
+    pdf_url: 'https://www.agropeonias.cl/_files/ugd/f027d5_e311a960d3bc465d8738602550abe4d1.pdf',
+    features: [
+      { label: 'Color', desc: 'Blanco Cremoso / Marfil' },
+      { label: 'Tamaño Botón', desc: '3.3 cm' },
+      { label: 'Largo Tallo', desc: '75 cm' },
+      { label: 'Fragancia', desc: 'Cítrica Intensa' },
+      { label: 'Vida Florero', desc: '10 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 18,
@@ -201,7 +348,16 @@ const AGROPEONIAS_PRODUCTS = [
     price: '4000',
     regular_price: '4000',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/product_bowl_of_cream.webp' }]
+    images: [{ src: '/product_bowl_of_cream.webp' }],
+    pdf_url: 'https://www.agropeonias.cl/_files/ugd/f027d5_4f982c846061485dabf456c8070f3f00.pdf',
+    features: [
+      { label: 'Color', desc: 'Blanco Puro Cremoso' },
+      { label: 'Tamaño Botón', desc: '3.5 cm' },
+      { label: 'Largo Tallo', desc: '80 cm' },
+      { label: 'Fragancia', desc: 'Leve' },
+      { label: 'Vida Florero', desc: '10 días' },
+      { label: 'Temporada', desc: 'Noviembre / Diciembre' }
+    ]
   },
   {
     id: 19,
@@ -212,7 +368,15 @@ const AGROPEONIAS_PRODUCTS = [
     price: '7900',
     regular_price: '7900',
     categories: [{ id: 2, name: 'Rizomas', slug: 'rizomas' }],
-    images: [{ src: '/product_sarah_bernhardt.webp' }]
+    images: [{ src: '/product_sarah_bernhardt.webp' }],
+    pdf_url: 'https://www.agropeonias.cl/_files/ugd/f027d5_5082c3d2b05247b6a6867f6198590093.pdf',
+    features: [
+      { label: 'Tipo', desc: 'Rizoma para Cultivo' },
+      { label: 'Yemas', desc: '3 a 5 yemas vigorosas' },
+      { label: 'Época Plantación', desc: 'Mayo / Junio' },
+      { label: 'Suelo Recomendado', desc: 'Franco-arcilloso con buen drenaje' },
+      { label: 'Exposición', desc: 'Pleno sol / Media sombra' }
+    ]
   },
   {
     id: 20,
@@ -223,7 +387,15 @@ const AGROPEONIAS_PRODUCTS = [
     price: '8500',
     regular_price: '8500',
     categories: [{ id: 2, name: 'Rizomas', slug: 'rizomas' }],
-    images: [{ src: '/product_coral_charm.webp' }]
+    images: [{ src: '/product_coral_charm.webp' }],
+    pdf_url: 'https://www.agropeonias.cl/_files/ugd/f027d5_3fc9cbf725864e25ad5b0e0ef782e311.pdf',
+    features: [
+      { label: 'Tipo', desc: 'Rizoma para Cultivo' },
+      { label: 'Yemas', desc: '3 a 5 yemas vigorosas' },
+      { label: 'Época Plantación', desc: 'Mayo / Junio' },
+      { label: 'Suelo Recomendado', desc: 'Franco-arcilloso con buen drenaje' },
+      { label: 'Exposición', desc: 'Pleno sol / Media sombra' }
+    ]
   },
   {
     id: 21,
@@ -234,7 +406,15 @@ const AGROPEONIAS_PRODUCTS = [
     price: '8900',
     regular_price: '8900',
     categories: [{ id: 2, name: 'Rizomas', slug: 'rizomas' }],
-    images: [{ src: '/product_red_charm.webp' }]
+    images: [{ src: '/product_red_charm.webp' }],
+    pdf_url: 'https://www.agropeonias.cl/_files/ugd/f027d5_67ea76b877cc4e5e84e3be70d04e8bc8.pdf',
+    features: [
+      { label: 'Tipo', desc: 'Rizoma para Cultivo' },
+      { label: 'Yemas', desc: '3 a 5 yemas vigorosas' },
+      { label: 'Época Plantación', desc: 'Mayo / Junio' },
+      { label: 'Suelo Recomendado', desc: 'Franco-arcilloso con buen drenaje' },
+      { label: 'Exposición', desc: 'Pleno sol' }
+    ]
   },
   {
     id: 22,
@@ -245,7 +425,15 @@ const AGROPEONIAS_PRODUCTS = [
     price: '7500',
     regular_price: '7500',
     categories: [{ id: 2, name: 'Rizomas', slug: 'rizomas' }],
-    images: [{ src: '/product_kansas.webp' }]
+    images: [{ src: '/product_kansas.webp' }],
+    pdf_url: 'https://www.agropeonias.cl/_files/ugd/f027d5_235759395d4b4b7d8a30d1eb8650f8df.pdf',
+    features: [
+      { label: 'Tipo', desc: 'Rizoma para Cultivo' },
+      { label: 'Yemas', desc: '3 a 5 yemas vigorosas' },
+      { label: 'Época Plantación', desc: 'Mayo / Junio' },
+      { label: 'Suelo Recomendado', desc: 'Franco-arcilloso con buen drenaje' },
+      { label: 'Exposición', desc: 'Pleno sol' }
+    ]
   }
 ];
 
@@ -256,7 +444,7 @@ const AGROPEONIAS_BLOG_POSTS = [
     date: '2026-04-27T12:00:00',
     title: { rendered: 'Primer Seminario sobre Producción de Peonías y Claves para la Postcosecha en Curicó' },
     excerpt: { rendered: '<p>Organizado por AgroPeonías y PeonyLab con la participación de más de 140 productores, este hito liderado por Consuelo Callejas abordó la peonía como flor de lujo y su rol en la Marca País.</p>' },
-    content: { rendered: '<h2>Un Hito para la Floricultura del Valle Central</h2><p>Con la participación de más de <strong>140 asistentes del rubro floricultor</strong> de la región, se realizó en Curicó el <strong>Primer Seminario sobre la Producción de Peonías y Claves para la Postcosecha</strong>, organizado por <strong>AgroPeonías</strong> y PeonyLab.</p><h2>Liderazgo y Gestión Gremial</h2><p>La gestora y coordinadora de este primer gran encuentro fue <strong>Consuelo Callejas</strong>, Empresaria Agrícola y Presidenta de la Asociación Gremial de Peonías de Chile, quien lideró la pauta técnica y comercial ante productores, agrónomos y profesionales del sector en los salones del Hotel Villa El Descanso.</p><figure style="text-align: center; margin: 35px 0;"><img src="/agropeonias_seminario_curico.webp" alt="Consuelo Callejas en el Seminario de Peonías en Curicó" style="max-width: 100%; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);" /><figcaption style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">Consuelo Callejas exponiendo las claves del cultivo y postcosecha ante más de 140 floricultores.</figcaption></figure><h2>La Peonía: Producto de Lujo e Imagen País</h2><p>¿Sabías que más del <strong>90% de las exportaciones de floricultura en Chile corresponden a Peonías</strong>? Durante el seminario se profundizó en el potencial de esta flor de alta gama como embajadora de la Marca País en los mercados más exigentes de Europa, Asia y América.</p><h2>Pauta del Seminario y Ejes Temáticos</h2><ul><li><strong>Peonías y Marca País:</strong> Posicionamiento internacional del producto de lujo chileno.</li><li><strong>Manejo Agronómico:</strong> Optimización de nutrición y rendimiento en huerto.</li><li><strong>Uso de Bioestimulantes:</strong> Estrategias sostenibles para potenciar el vigor radicular y floral.</li><li><strong>Visión Comercial para la Industria:</strong> Apertura de canales mayoristas, banqueteras y floristas.</li><li><strong>Apoyo a la Postcosecha:</strong> Cadena de frío y protocolos de conservación en florero.</li></ul><blockquote>"Estamos desarrollando un producto de lujo, trabajando de la mano para el crecimiento nacional e internacional de esta demandada flor. Uno de nuestros mayores desafíos es darla a conocer fuertemente en nuestro propio país."<br><small>— Consuelo Callejas, Presidenta Asociación Gremial de Peonías</small></blockquote>' },
+    content: { rendered: '<h2>Un Hito para la Floricultura del Valle Central</h2><p>Con la participación de más de <strong>140 asistentes del rubro floricultor</strong> de la región, se realizó en Curicó el <strong>Primer Seminario sobre la Producción de Peonías y Claves para la Postcosecha</strong>, organizado por <strong>AgroPeonías</strong> y PeonyLab.</p><h2>Liderazgo y Gestión Gremial</h2><p>La gestora y coordinadora de este primer gran encuentro fue <strong>Consuelo Callejas</strong>, Empresaria Agrícola y Presidenta de la Asociación Gremial de Peonías de Chile, quien lideró la pauta técnica y comercial ante productores, agrónomos and profesionales del sector en los salones del Hotel Villa El Descanso.</p><figure style="text-align: center; margin: 35px 0;"><img src="/agropeonias_seminario_curico.webp" alt="Consuelo Callejas en el Seminario de Peonías en Curicó" style="max-width: 100%; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);" /><figcaption style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">Consuelo Callejas exponiendo las claves del cultivo y postcosecha ante más de 140 floricultores.</figcaption></figure><h2>La Peonía: Producto de Lujo e Imagen País</h2><p>¿Sabías que más del <strong>90% de las exportaciones de floricultura en Chile corresponden a Peonías</strong>? Durante el seminario se profundizó en el potencial de esta flor de alta gama como embajadora de la Marca País en los mercados más exigentes de Europa, Asia y América.</p><h2>Pauta del Seminario y Ejes Temáticos</h2><ul><li><strong>Peonías y Marca País:</strong> Posicionamiento internacional del producto de lujo chileno.</li><li><strong>Manejo Agronómico:</strong> Optimización de nutrición y rendimiento en huerto.</li><li><strong>Uso de Bioestimulantes:</strong> Estrategias sostenibles para potenciar el vigor radicular y floral.</li><li><strong>Visión Comercial para la Industria:</strong> Apertura de canales mayoristas, banqueteras y floristas.</li><li><strong>Apoyo a la Postcosecha:</strong> Cadena de frío y protocols de conservación en florero.</li></ul><blockquote>"Estamos desarrollando un producto de lujo, trabajando de la mano para el crecimiento nacional e internacional de esta demandada flor. Uno de nuestros mayores desafíos es darla a conocer fuertemente en nuestro propio país."<br><small>— Consuelo Callejas, Presidenta Asociación Gremial de Peonías</small></blockquote>' },
     _embedded: {
       'wp:featuredmedia': [{ source_url: '/agropeonias_seminario_curico.webp' }]
     }
@@ -367,13 +555,13 @@ const withCache = async (key, fetcher, translatorWrapper) => {
 
 const WordPressService = {
   getProducts: async () => {
-    return withCache('agropeonias_real_shop_v1', async () => {
+    return withCache('agropeonias_real_shop_v2', async () => {
       return AGROPEONIAS_PRODUCTS;
     }, async (data) => data);
   },
 
   getProduct: async (id) => {
-    return withCache(`agropeonias_real_product_v1_${id}`, async () => {
+    return withCache(`agropeonias_real_product_v2_${id}`, async () => {
       const numericId = Number(id);
       const product = AGROPEONIAS_PRODUCTS.find(p => p.id === numericId || p.slug === id);
       return product || AGROPEONIAS_PRODUCTS[0];
@@ -381,13 +569,13 @@ const WordPressService = {
   },
 
   getBlogPosts: async () => {
-    return withCache('agropeonias_blog_posts_v5', async () => {
+    return withCache('agropeonias_blog_posts_v6', async () => {
       return AGROPEONIAS_BLOG_POSTS;
     }, async (data) => Promise.all(data.map(tPost)));
   },
 
   getPost: async (id) => {
-    return withCache(`agropeonias_blog_post_v5_${id}`, async () => {
+    return withCache(`agropeonias_blog_post_v6_${id}`, async () => {
       const numericId = Number(id);
       const post = AGROPEONIAS_BLOG_POSTS.find(p => p.id === numericId);
       return post || AGROPEONIAS_BLOG_POSTS[0];
