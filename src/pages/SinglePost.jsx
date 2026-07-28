@@ -109,7 +109,7 @@ const SinglePost = () => {
                     style={{ marginTop: '100px', padding: '60px 40px', background: '#F8F9FA', borderRadius: '30px', textAlign: 'center', border: '1px solid rgba(0,0,0,0.05)' }}
                 >
                     <h3 style={{ color: 'var(--color-primary)', marginBottom: '15px', fontSize: '2rem' }}>¿Inspirado por este artículo?</h3>
-                    <p style={{ opacity: 0.8, marginBottom: '30px', fontSize: '1.1rem', color: 'var(--color-text)' }}>Conoce nuestros formatos de exportación directamente desde la Patagonia.</p>
+                    <p style={{ opacity: 0.8, marginBottom: '30px', fontSize: '1.1rem', color: 'var(--color-text)' }}>Conoce nuestros formatos de flores y rizomas cosechados en Romeral, Región del Maule.</p>
                     <Link to="/catalogo" className="btn-pro" style={{ display: 'inline-block' }}>Ver Formatos de Peonías</Link>
                 </motion.div>
             </div>

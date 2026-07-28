@@ -35,7 +35,7 @@ const Blog = ({ limit, variant = 'grid', hideTitle = false }) => {
                         viewport={{ once: true }}
                     >
                         <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>Inspiración & <span style={{ color: 'var(--color-secondary)' }}>Historias</span></h2>
-                        <p style={{ opacity: 0.8, maxWidth: '600px', margin: '0 auto', fontWeight: 300 }}>Consejos expertos para cuidar tus peonías y secretos de la Patagonia.</p>
+                        <p style={{ opacity: 0.8, maxWidth: '600px', margin: '0 auto', fontWeight: 300 }}>Consejos expertos para cuidar tus peonías y novedades de nuestro predio en Romeral.</p>
                     </motion.div>
                 )}
 
