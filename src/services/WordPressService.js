@@ -3,76 +3,164 @@ import axios from 'axios';
 // Si AgroPeonías habilita su propio WordPress en el futuro, se configura aquí.
 const BASE_URL = 'https://www.agropeonias.cl/wp-json';
 
-// Catálogo completo de productos oficial para AgroPeonías Chile (Romeral, Región del Maule)
+// Catálogo real extraído directamente de la web oficial de AgroPeonías (https://www.agropeonias.cl/shop)
 const AGROPEONIAS_PRODUCTS = [
   {
     id: 1,
-    name: 'Sarah Bernhardt',
-    slug: 'sarah-bernhardt',
-    short_description: 'Rosa suave clásica, la peonía más popular y cotizada del mundo por su elegancia y fragancia única.',
-    description: 'La peonía Sarah Bernhardt es el ícono indiscutido de las peonías de corte. Presenta pétalos dobles en un delicado tono rosa suave con destellos plateados. Ideal para ramos de novia, eventos de lujo y arreglos florales sofisticados. Cosechada en nuestro predio de Romeral.',
-    price: '3500',
-    regular_price: '3500',
-    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/peonias_chile_peonies.webp' }, { src: '/ramo_peonias.webp' }]
-  },
-  {
-    id: 2,
-    name: 'Coral Charm',
-    slug: 'coral-charm',
-    short_description: 'Impresionante variedad que transforma mágicamente su color de coral vibrante a un marfil crema suave.',
-    description: 'Coral Charm destaca por su forma semi-doble y su espectacular evolución de color. Al abrirse, despliega tonos salmón y coral que gradualmente transicionan hacia un elegante marfil. Cosechada en Romeral, Región del Maule.',
-    price: '3800',
-    regular_price: '3800',
-    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/ramo_peonias.webp' }, { src: '/home_hero.webp' }]
-  },
-  {
-    id: 3,
-    name: 'Bowl of Cream',
-    slug: 'bowl-of-cream',
-    short_description: 'Espectaculares flores dobles de color blanco puro cremoso de gran tamaño y forma majestuosa.',
-    description: 'Bowl of Cream hace honor a su nombre con enormes inflorescencias de pétalos cremosos de blanco puro. Una variedad de lujo cotizada internacionalmente para alta banquetería y arreglos de gran impacto.',
-    price: '4000',
-    regular_price: '4000',
-    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/caja_peonias.webp' }, { src: '/hero_single_product.webp' }]
-  },
-  {
-    id: 4,
-    name: 'Duchesse de Nemours',
-    slug: 'duchesse-de-nemours',
-    short_description: 'Blanca cremosa clásica con toque verdoso al centro y una exquisita fragancia cítrica.',
-    description: 'Una de las variedades blancas más antiguas y apreciadas en la floricultura mundial. Destaca por su aroma fresco cítrico y la delicadeza de sus pétalos compactos.',
-    price: '3500',
-    regular_price: '3500',
-    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/hero_single_product.webp' }]
-  },
-  {
-    id: 5,
-    name: 'Alexander Fleming',
-    slug: 'alexander-fleming',
-    short_description: 'Peonía rosa intensa y profunda con una fragancia dulce muy marcada.',
-    description: 'Variedad de pétalos rosa vivaz con centros rizados y aroma envolvente. Excelente desempeño en florero y gran vida útil tras el corte.',
-    price: '3600',
-    regular_price: '3600',
-    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/ramo_peonias.webp' }]
-  },
-  {
-    id: 6,
     name: 'Kansas',
     slug: 'kansas',
-    short_description: 'Rojo magenta brillante e intenso que mantiene su color firme sin desteñir.',
-    description: 'Kansas impresiona por su potente tono rojo fucsia/magenta con pétalos dobles sobre tallos firmes y erguidos. Aporta vitalidad y contraste único en cualquier composición.',
+    short_description: 'Peonía fucsia magenta brillante con pétalos dobles súper densos sobre tallos firmes.',
+    description: 'Kansas impresiona por su potente tono fucsia/magenta con pétalos dobles sobre tallos firmes y erguidos. Aporta vitalidad y contraste único en cualquier composición floral. Cultivada en nuestro predio en Romeral, Región del Maule.',
     price: '3700',
     regular_price: '3700',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/home_hero_2.webp' }]
+    images: [{ src: '/product_kansas.webp' }, { src: '/ramo_peonias.webp' }]
+  },
+  {
+    id: 2,
+    name: 'Gardenia',
+    slug: 'gardenia',
+    short_description: 'Blanca crema delicada con textura sedosa y una distinguida fragancia dulce.',
+    description: 'La peonía Gardenia despliega inflorescencias de blanco puro cremoso con matices amarillos sutiles al centro. Destaca por su elegancia serena y su gran vida útil en florero.',
+    price: '3800',
+    regular_price: '3800',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/product_gardenia.webp' }, { src: '/caja_peonias.webp' }]
+  },
+  {
+    id: 3,
+    name: 'Diana Parks',
+    slug: 'diana-parks',
+    short_description: 'Espectacular peonía de tono rojo escarlata brillante con forma de bomba compacta.',
+    description: 'Diana Parks es una de las variedades rojas más codiciadas de la floricultura. Sus pétalos interiores forman un domo aterciopelado de color rojo intenso que cautiva a floristas y banqueteras.',
+    price: '4200',
+    regular_price: '4200',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/product_diana_parks.webp' }]
+  },
+  {
+    id: 4,
+    name: 'Etched Salmon',
+    slug: 'etched-salmon',
+    short_description: 'Salmón rosado simétrico de textura esculpida, una verdadera joya florícola.',
+    description: 'Galardonada internacionalmente por su simetría perfecta de pétalos rosados con matices salmón y bordes plateados. Su forma doble esculpida la convierte en una variedad de lujo.',
+    price: '4500',
+    regular_price: '4500',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/product_etched_salmon.webp' }]
+  },
+  {
+    id: 5,
+    name: 'Buckeye Belle',
+    slug: 'buckeye-belle',
+    short_description: 'Rojo caoba profundo aterciopelado con estambres dorados resplandecientes.',
+    description: 'Buckeye Belle deslumbra por su sofisticada tonalidad rojo borgoña/vino con centro de anteras amarillas doradas. Aporta dramatismo y elegancia contemporánea.',
+    price: '4000',
+    regular_price: '4000',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/product_buckeye_belle.webp' }]
+  },
+  {
+    id: 6,
+    name: 'Pillow Talk',
+    slug: 'pillow-talk',
+    short_description: 'Rosa suave pastel de pétalos acolchados gigantes y aroma envolvente.',
+    description: 'Grandes flores dobles de tono rosa delicado que recuerdan nubes afelpadas. Es ideal para bodas, eventos románticos y arreglos de alto estándar.',
+    price: '3900',
+    regular_price: '3900',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/product_pillow_talk.webp' }]
   },
   {
     id: 7,
+    name: 'Henry Bockstoce',
+    slug: 'henry-bockstoce',
+    short_description: 'Rojo carmesí de tamaño colosal y centro en forma de rosa perfecta.',
+    description: 'Flores gigantes de color rojo sangre profundo sobre tallos gruesos y resistentes. Su estructura en capullo denso garantiza una larga durabilidad tras la cosecha.',
+    price: '4300',
+    regular_price: '4300',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/product_henry_bockstoce.webp' }]
+  },
+  {
+    id: 8,
+    name: 'Fringed Ivory',
+    slug: 'fringed-ivory',
+    short_description: 'Blanca marfil plumosa de aspecto silvestre y gran ligereza visual.',
+    description: 'Variedad de pétalos deshilachados en marfil puro con un toque verdoso en la base. Transmite frescura y estilo de jardín europeo.',
+    price: '3700',
+    regular_price: '3700',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/product_fringed_ivory.webp' }]
+  },
+  {
+    id: 9,
+    name: 'Florence Nicholls',
+    slug: 'florence-nicholls',
+    short_description: 'Blanca ruborizada con destellos rosados en el centro y fragancia romántica.',
+    description: 'Abre en un tono blanco marfil con rubor rosa pálido que se aclara gradualmente. Muy buscada por decoradores internacionales.',
+    price: '3800',
+    regular_price: '3800',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/product_florence_nicholls.webp' }]
+  },
+  {
+    id: 10,
+    name: 'Coral Sunset',
+    slug: 'coral-sunset',
+    short_description: 'Coral dorado salmón de evolución de color intensa y botones exuberantes.',
+    description: 'Destaca por su apertura vibrante en tonos coral y naranja salmón que gradualmente se transforman en amarillo crema marfil. Una maravilla de la naturaleza.',
+    price: '4000',
+    regular_price: '4000',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/product_coral_sunset.webp' }]
+  },
+  {
+    id: 11,
+    name: 'Bridal Shower',
+    slug: 'bridal-shower',
+    short_description: 'Blanca nupcial pura de forma abombada rimbombante.',
+    description: 'Su nombre lo dice todo: la flor predilecta para novias. Pétalos de blanco inmaculado en capas tupidas y forma esférica majestuosa.',
+    price: '4100',
+    regular_price: '4100',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/product_bridal_shower.webp' }]
+  },
+  {
+    id: 12,
+    name: 'Red Sarah Bernhardt',
+    slug: 'red-sarah-bernhardt',
+    short_description: 'Fucsia rubí intenso de la clásica estirpe Bernhardt en versión colorida.',
+    description: 'Conserva toda la generosidad y vida útil de la Sarah Bernhardt tradicional, vistiendo pétalos rosa fucsia rubí profundamente fragantes.',
+    price: '3900',
+    regular_price: '3900',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/product_red_sarah_bernhardt.webp' }]
+  },
+  {
+    id: 13,
+    name: 'Peter Brand',
+    slug: 'peter-brand',
+    short_description: 'Rojo purpúreo oscuro aterciopelado con estambres dorados en contraste.',
+    description: 'Una peonía holandesa histórica de tono vino tinto oscuro y destellos violetas. Excelente consistencia y calidad de tallo.',
+    price: '4100',
+    regular_price: '4100',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/product_peter_brand.webp' }]
+  },
+  {
+    id: 14,
+    name: 'Sarah Bernhardt',
+    slug: 'sarah-bernhardt',
+    short_description: 'Rosa suave clásica, la peonía más popular y cotizada del mundo por su elegancia.',
+    description: 'La peonía Sarah Bernhardt es el ícono indiscutido de las peonías de corte. Presenta pétalos dobles en un delicado tono rosa suave con destellos plateados. Cosechada en nuestro predio de Romeral.',
+    price: '3500',
+    regular_price: '3500',
+    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
+    images: [{ src: '/product_sarah_bernhardt.webp' }, { src: '/ramo_peonias.webp' }]
+  },
+  {
+    id: 15,
     name: 'Red Charm',
     slug: 'red-charm',
     short_description: 'Rojo profundo encendido en forma de bomba perfecta y textura aterciopelada.',
@@ -80,76 +168,54 @@ const AGROPEONIAS_PRODUCTS = [
     price: '4200',
     regular_price: '4200',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/peonias_chile_peonies.webp' }]
+    images: [{ src: '/product_red_charm.webp' }]
   },
   {
-    id: 8,
-    name: 'Monsieur Jules Elie',
-    slug: 'monsieur-jules-elie',
-    short_description: 'Rosa pálido plateado en forma de bomba con pétalos exteriores sedosos.',
-    description: 'Clásica variedad francesa con flores gigantes de rosa pálido con visos plateados. Sus pétalos interiores forman un domo espeso de gran belleza.',
-    price: '3600',
-    regular_price: '3600',
-    categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/ramo_peonias.webp' }]
-  },
-  {
-    id: 9,
-    name: 'Paul M. Wild',
-    slug: 'paul-m-wild',
-    short_description: 'Rojo rubí velvet deslumbrante que conserva su intensidad intacta al abrir.',
-    description: 'Hermosa peonía roja de pétalos aterciopelados y floración tardía que amplía la temporada comercial con la máxima calidad.',
+    id: 16,
+    name: 'Coral Charm',
+    slug: 'coral-charm',
+    short_description: 'Impresionante variedad que transforma mágicamente su color de coral vibrante a marfil.',
+    description: 'Coral Charm destaca por su forma semi-doble y su espectacular evolución de color. Al abrirse, despliega tonos salmón y coral que gradualmente transicionan hacia un elegante marfil.',
     price: '3800',
     regular_price: '3800',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/home_hero_2.webp' }]
+    images: [{ src: '/product_coral_charm.webp' }]
   },
   {
-    id: 10,
-    name: 'Immaculae',
-    slug: 'immaculae',
-    short_description: 'Blanca pura cristalina, ideal para arreglos nupciales e interiorismo.',
-    description: 'Flores de un blanco inmaculado y textura sedosa. Su elegancia sobria la convierte en la favorita para decoradores de eventos de gala.',
-    price: '3700',
-    regular_price: '3700',
+    id: 17,
+    name: 'Duchesse de Nemours',
+    slug: 'duchesse-de-nemours',
+    short_description: 'Blanca cremosa clásica con toque verdoso al centro y una exquisita fragancia cítrica.',
+    description: 'Una de las variedades blancas más antiguas y apreciadas en la floricultura mundial. Destaca por su aroma fresco cítrico y la delicadeza de sus pétalos compactos.',
+    price: '3500',
+    regular_price: '3500',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/caja_peonias.webp' }]
+    images: [{ src: '/product_duchesse_de_nemours.webp' }]
   },
   {
-    id: 11,
-    name: 'Pecher',
-    slug: 'pecher',
-    short_description: 'Blanca marfil suave con delicados trazos rojos/carmesí en el centro.',
-    description: 'Una de las peonías más delicadas y románticas. Presenta pétalos cremosos sutilmente matizados con pequeñas pinceladas rojas.',
-    price: '3600',
-    regular_price: '3600',
+    id: 18,
+    name: 'Bowl of Cream',
+    slug: 'bowl-of-cream',
+    short_description: 'Espectaculares flores dobles de color blanco puro cremoso de gran tamaño y forma majestuosa.',
+    description: 'Bowl of Cream hace honor a su nombre con enormes inflorescencias de pétalos cremosos de blanco puro. Una variedad de lujo cotizada internacionalmente.',
+    price: '4000',
+    regular_price: '4000',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/hero_single_product.webp' }]
+    images: [{ src: '/product_bowl_of_cream.webp' }]
   },
   {
-    id: 12,
-    name: 'Rizoma Alexander Fleming',
-    slug: 'rizoma-alexander-fleming',
-    short_description: 'Rizoma vigoroso de peonía rosa fragante listo para plantación de temporada.',
-    description: 'Rizoma seleccionado de la variedad Alexander Fleming cosechado en nuestro campo de Romeral. Garantiza yemas sanas con alto poder germinativo para cultivar en tu jardín.',
-    price: '7500',
-    regular_price: '7500',
-    categories: [{ id: 2, name: 'Rizomas', slug: 'rizomas' }],
-    images: [{ src: '/ramo_peonias.webp' }]
-  },
-  {
-    id: 13,
+    id: 19,
     name: 'Rizoma Sarah Bernhardt',
     slug: 'rizoma-sarah-bernhardt',
-    short_description: 'Rizoma de alta calidad de la variedad rosa clásica más icónica.',
-    description: 'Cultiva tus propias peonías Sarah Bernhardt. Rizomas vigorosos preparados bajo estándares técnicos de refrigeración y sanidad vegetal.',
+    short_description: 'Rizoma de alta calidad de la variedad rosa clásica más emblemática.',
+    description: 'Cultiva tus propias peonías Sarah Bernhardt. Rizomas vigorosos preparados bajo estándares técnicos de refrigeración y sanidad vegetal en Romeral.',
     price: '7900',
     regular_price: '7900',
     categories: [{ id: 2, name: 'Rizomas', slug: 'rizomas' }],
-    images: [{ src: '/peonias_chile_peonies.webp' }]
+    images: [{ src: '/product_sarah_bernhardt.webp' }]
   },
   {
-    id: 14,
+    id: 20,
     name: 'Rizoma Coral Charm',
     slug: 'rizoma-coral-charm',
     short_description: 'Rizoma seleccionado de la codiciada variedad cambiante de coral a marfil.',
@@ -157,7 +223,29 @@ const AGROPEONIAS_PRODUCTS = [
     price: '8500',
     regular_price: '8500',
     categories: [{ id: 2, name: 'Rizomas', slug: 'rizomas' }],
-    images: [{ src: '/ramo_peonias.webp' }]
+    images: [{ src: '/product_coral_charm.webp' }]
+  },
+  {
+    id: 21,
+    name: 'Rizoma Red Charm',
+    slug: 'rizoma-red-charm',
+    short_description: 'Rizoma seleccionado de peonía rojo escarlata aterciopelada en bomba.',
+    description: 'Rizoma vigoroso cosechado en Romeral con yemas sanas para un cultivo de alta calidad en huerto o jardín.',
+    price: '8900',
+    regular_price: '8900',
+    categories: [{ id: 2, name: 'Rizomas', slug: 'rizomas' }],
+    images: [{ src: '/product_red_charm.webp' }]
+  },
+  {
+    id: 22,
+    name: 'Rizoma Kansas',
+    slug: 'rizoma-kansas',
+    short_description: 'Rizoma de peonía fucsia magenta brillante de gran poder germinativo.',
+    description: 'Rizoma seleccionado de la variedad Kansas para cultivo de flores de corte o jardín ornamental.',
+    price: '7500',
+    regular_price: '7500',
+    categories: [{ id: 2, name: 'Rizomas', slug: 'rizomas' }],
+    images: [{ src: '/product_kansas.webp' }]
   }
 ];
 
@@ -168,7 +256,7 @@ const AGROPEONIAS_BLOG_POSTS = [
     date: '2026-04-27T12:00:00',
     title: { rendered: 'Primer Seminario sobre Producción de Peonías y Claves para la Postcosecha en Curicó' },
     excerpt: { rendered: '<p>Organizado por AgroPeonías y PeonyLab con la participación de más de 140 productores, este hito liderado por Consuelo Callejas abordó la peonía como flor de lujo y su rol en la Marca País.</p>' },
-    content: { rendered: '<h2>Un Hito para la Floricultura del Valle Central</h2><p>Con la participación de más de <strong>140 asistentes del rubro floricultor</strong> de la región, se realizó en Curicó el <strong>Primer Seminario sobre la Producción de Peonías y Claves para la Postcosecha</strong>, organizado por <strong>AgroPeonías</strong> y PeonyLab.</p><h2>Liderazgo y Gestión Gremial</h2><p>La gestora y coordinadora de este primer gran encuentro fue <strong>Consuelo Callejas</strong>, Empresaria Agrícola y Presidenta de la Asociación Gremial de Peonías de Chile, quien lideró la pauta técnica y comercial ante productores, agrónomos y profesionales del sector en los salones del Hotel Villa El Descanso.</p><figure style="text-align: center; margin: 35px 0;"><img src="/agropeonias_seminario_curico.webp" alt="Consuelo Callejas en el Seminario de Peonías en Curicó" style="max-width: 100%; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);" /><figcaption style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">Consuelo Callejas exponiendo las claves del cultivo y postcosecha ante más de 140 floricultores.</figcaption></figure><h2>La Peonía: Producto de Lujo e Imagen País</h2><p>¿Sabías que más del <strong>90% de las exportaciones de floricultura en Chile corresponden a Peonías</strong>? Durante el seminario se profundizó en el potencial de esta flor de alta gama como embajadora de la Marca País en los mercados más exigentes de Europa, Asia y América.</p><h2>Pauta del Seminario y Ejes Temáticos</h2><ul><li><strong>Peonías y Marca País:</strong> Posicionamiento internacional del producto de lujo chileno.</li><li><strong>Manejo Agronómico:</strong> Optimización de nutrición y rendimiento en huerto.</li><li><strong>Uso de Bioestimulantes:</strong> Estrategias sostenibles para potenciar el vigor radicular y floral.</li><li><strong>Visión Comercial para la Industria:</strong> Apertura de canales mayoristas, banqueteras y floristas.</li><li><strong>Apoyo a la Postcosecha:</strong> Cadena de frío y protocolos de conservación en florero.</li></ul><blockquote>"Estamos desarrollando un producto de lujo, trabajando de la mano para el crecimiento nacional e internacional de esta demandada flor. Uno de nuestros mayores desafíos es darla a conocer fuertelmente en nuestro propio país."<br><small>— Consuelo Callejas, Presidenta Asociación Gremial de Peonías</small></blockquote>' },
+    content: { rendered: '<h2>Un Hito para la Floricultura del Valle Central</h2><p>Con la participación de más de <strong>140 asistentes del rubro floricultor</strong> de la región, se realizó en Curicó el <strong>Primer Seminario sobre la Producción de Peonías y Claves para la Postcosecha</strong>, organizado por <strong>AgroPeonías</strong> y PeonyLab.</p><h2>Liderazgo y Gestión Gremial</h2><p>La gestora y coordinadora de este primer gran encuentro fue <strong>Consuelo Callejas</strong>, Empresaria Agrícola y Presidenta de la Asociación Gremial de Peonías de Chile, quien lideró la pauta técnica y comercial ante productores, agrónomos y profesionales del sector en los salones del Hotel Villa El Descanso.</p><figure style="text-align: center; margin: 35px 0;"><img src="/agropeonias_seminario_curico.webp" alt="Consuelo Callejas en el Seminario de Peonías en Curicó" style="max-width: 100%; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);" /><figcaption style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">Consuelo Callejas exponiendo las claves del cultivo y postcosecha ante más de 140 floricultores.</figcaption></figure><h2>La Peonía: Producto de Lujo e Imagen País</h2><p>¿Sabías que más del <strong>90% de las exportaciones de floricultura en Chile corresponden a Peonías</strong>? Durante el seminario se profundizó en el potencial de esta flor de alta gama como embajadora de la Marca País en los mercados más exigentes de Europa, Asia y América.</p><h2>Pauta del Seminario y Ejes Temáticos</h2><ul><li><strong>Peonías y Marca País:</strong> Posicionamiento internacional del producto de lujo chileno.</li><li><strong>Manejo Agronómico:</strong> Optimización de nutrición y rendimiento en huerto.</li><li><strong>Uso de Bioestimulantes:</strong> Estrategias sostenibles para potenciar el vigor radicular y floral.</li><li><strong>Visión Comercial para la Industria:</strong> Apertura de canales mayoristas, banqueteras y floristas.</li><li><strong>Apoyo a la Postcosecha:</strong> Cadena de frío y protocolos de conservación en florero.</li></ul><blockquote>"Estamos desarrollando un producto de lujo, trabajando de la mano para el crecimiento nacional e internacional de esta demandada flor. Uno de nuestros mayores desafíos es darla a conocer fuertemente en nuestro propio país."<br><small>— Consuelo Callejas, Presidenta Asociación Gremial de Peonías</small></blockquote>' },
     _embedded: {
       'wp:featuredmedia': [{ source_url: '/agropeonias_seminario_curico.webp' }]
     }
@@ -264,7 +352,6 @@ const withCache = async (key, fetcher, translatorWrapper) => {
   const lang = localStorage.getItem('agropeonias_lang') || 'es';
   const finalKey = lang === 'en' ? `${key}_en` : key;
 
-  // Limpia cualquier sesión antigua almacenada en el navegador
   try {
     sessionStorage.clear();
   } catch (e) {}
@@ -280,13 +367,13 @@ const withCache = async (key, fetcher, translatorWrapper) => {
 
 const WordPressService = {
   getProducts: async () => {
-    return withCache('agropeonias_products_v4', async () => {
+    return withCache('agropeonias_real_shop_v1', async () => {
       return AGROPEONIAS_PRODUCTS;
     }, async (data) => data);
   },
 
   getProduct: async (id) => {
-    return withCache(`agropeonias_product_v4_${id}`, async () => {
+    return withCache(`agropeonias_real_product_v1_${id}`, async () => {
       const numericId = Number(id);
       const product = AGROPEONIAS_PRODUCTS.find(p => p.id === numericId || p.slug === id);
       return product || AGROPEONIAS_PRODUCTS[0];
@@ -294,13 +381,13 @@ const WordPressService = {
   },
 
   getBlogPosts: async () => {
-    return withCache('agropeonias_blog_posts_v4', async () => {
+    return withCache('agropeonias_blog_posts_v5', async () => {
       return AGROPEONIAS_BLOG_POSTS;
     }, async (data) => Promise.all(data.map(tPost)));
   },
 
   getPost: async (id) => {
-    return withCache(`agropeonias_blog_post_v4_${id}`, async () => {
+    return withCache(`agropeonias_blog_post_v5_${id}`, async () => {
       const numericId = Number(id);
       const post = AGROPEONIAS_BLOG_POSTS.find(p => p.id === numericId);
       return post || AGROPEONIAS_BLOG_POSTS[0];
