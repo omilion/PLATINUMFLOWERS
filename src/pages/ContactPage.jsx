@@ -77,7 +77,7 @@ const ContactPage = () => {
                             transition={{ delay: 0.2 }}
                             style={{ maxWidth: '600px', margin: '0 auto', opacity: 0.9, fontWeight: 300, lineHeight: 1.8, color: 'white' }}
                         >
-                            Desde Coyhaique para el mundo. Resolvemos tus dudas sobre compras corporativas, eventos o el cuidado de tus ramos en la Patagonia.
+                            Productores de peonías en la zona central de Chile (Romeral, Región del Maule). Resolvemos tus dudas sobre ventas nacionales, asesorías para eventos y exportación.
                         </motion.p>
                     </div>
                 </section>
@@ -171,7 +171,7 @@ const ContactPage = () => {
                             </form>
                         </motion.div>
 
-                        {/* 🏔️ INFO DE CONTACTO & ESPÍRITU PATAGÓNICO */}
+                        {/* 🏔️ INFO DE CONTACTO & ESPÍRITU AGROPEONÍAS */}
                         <motion.div 
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -187,8 +187,8 @@ const ContactPage = () => {
                                             <MapPin size={24} color="var(--color-primary)" />
                                         </div>
                                         <div>
-                                            <h4 style={{ margin: '0 0 5px 0' }}>Sede Patagonia</h4>
-                                            <p style={{ margin: 0, opacity: 0.6, fontSize: '0.9rem', fontWeight: 300 }}>Camino Villa Ortega s/n, Coyhaique. Región de Aysén.</p>
+                                            <h4 style={{ margin: '0 0 5px 0' }}>Ubicación Predio</h4>
+                                            <p style={{ margin: 0, opacity: 0.6, fontSize: '0.9rem', fontWeight: 300 }}>Camino a Romeral km 1, Romeral. Región del Maule, Chile.</p>
                                         </div>
                                     </div>
 
@@ -198,7 +198,7 @@ const ContactPage = () => {
                                         </div>
                                         <div>
                                             <h4 style={{ margin: '0 0 5px 0' }}>Atención Clientes</h4>
-                                            <p style={{ margin: 0, opacity: 0.6, fontSize: '0.9rem', fontWeight: 300 }}>+569 9 2990 735</p>
+                                            <p style={{ margin: 0, opacity: 0.6, fontSize: '0.9rem', fontWeight: 300 }}>+56 9 4226 2053</p>
                                         </div>
                                     </div>
 
@@ -208,7 +208,7 @@ const ContactPage = () => {
                                         </div>
                                         <div>
                                             <h4 style={{ margin: '0 0 5px 0' }}>Consultas Mail</h4>
-                                            <p style={{ margin: 0, opacity: 0.6, fontSize: '0.9rem', fontWeight: 300 }}>ventas@platiniumflowers.com</p>
+                                            <p style={{ margin: 0, opacity: 0.6, fontSize: '0.9rem', fontWeight: 300 }}>agropeonias@gmail.com</p>
                                         </div>
                                     </div>
                                 </div>
@@ -217,8 +217,8 @@ const ContactPage = () => {
                             <div className="glass-card" style={{ background: 'var(--color-primary)', color: 'white', padding: '40px', position: 'relative', overflow: 'hidden' }}>
                                 <div style={{ position: 'relative', zIndex: 2 }}>
                                     <h3 style={{ color: 'var(--color-accent)', marginBottom: '15px' }}>Atención Inmediata</h3>
-                                    <p style={{ opacity: 0.8, fontWeight: 300, marginBottom: '25px', lineHeight: 1.6 }}>Si necesitas una respuesta rápida para stock de la semana, prefiere nuestro WhatsApp corporativo.</p>
-                                    <a href="https://wa.me/56992990735" target="_blank" rel="noreferrer" className="btn-pro" style={{ background: 'var(--color-accent)', color: 'var(--color-primary)', padding: '15px 30px', textDecoration: 'none' }}>
+                                    <p style={{ opacity: 0.8, fontWeight: 300, marginBottom: '25px', lineHeight: 1.6 }}>Si necesitas una respuesta rápida para stock de la semana o asesorías, contáctanos a nuestro WhatsApp corporativo.</p>
+                                    <a href="https://wa.me/56942262053" target="_blank" rel="noreferrer" className="btn-pro" style={{ background: 'var(--color-accent)', color: 'var(--color-primary)', padding: '15px 30px', textDecoration: 'none' }}>
                                         Chatear ahora <MessageCircle size={18} style={{ marginLeft: '10px' }} />
                                     </a>
                                 </div>

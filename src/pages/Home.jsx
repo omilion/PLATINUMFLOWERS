@@ -54,7 +54,7 @@ const Home = () => {
                     style={{ maxWidth: '1000px', margin: '0 auto' }}
                 >
                     <p style={{ fontSize: 'clamp(1.2rem, 3vw, 1.7rem)', color: 'var(--color-primary)', lineHeight: 1.6, fontWeight: 300, opacity: 0.85 }}>
-                        {"Cultivamos las más lindas peonías en el lugar más espectacular: La Patagonia. Bajo fuertes condiciones climáticas, prístinas aguas y frío intenso, cada temporada exportamos al mundo nuestras flores de gran calidad.".split(" ").map((word, index) => (
+                        {"Identidad, Sofisticación y Elegancia. Somos AgroPeonías, productores de peonías en la zona central de Chile (Romeral, Región del Maule). Contamos con un amplio portafolio de variedades y colores de peonías.".split(" ").map((word, index) => (
                             <motion.span 
                                 key={index} 
                                 variants={{
@@ -75,12 +75,36 @@ const Home = () => {
                 <ProductCarousel subtitle="Showroom" title="Nuestras <span style='color: var(--color-secondary)'>Peonías</span>" />
             </div>
 
-            {/* Banner Institucional Estático (Puramente Fotográfico) */}
+            {/* Sección Agrupación Productora */}
+            <section style={{ padding: '60px 20px', background: '#F8F9FA', textAlign: 'center' }}>
+                <div className="container" style={{ maxWidth: '1000px' }}>
+                    <h2 style={{ fontSize: '2rem', color: 'var(--color-primary)', marginBottom: '15px' }}>Nuestra Agrupación</h2>
+                    <p style={{ fontSize: '1.1rem', color: 'var(--color-primary)', opacity: 0.8, maxWidth: '850px', margin: '0 auto 40px', lineHeight: 1.6 }}>
+                        Nuestro equipo está dedicado a la agricultura por generaciones, cada uno en sus campos, generando alimentos y flores. Las peonías son nuestra gran pasión y hoy son el producto estrella de nuestros cultivos.
+                    </p>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '25px' }}>
+                        <div style={{ background: 'white', padding: '30px 20px', borderRadius: '16px', boxShadow: '0 4px 15px rgba(0,0,0,0.03)' }}>
+                            <h3 style={{ fontSize: '1.2rem', color: 'var(--color-primary)', marginBottom: '8px' }}>Consuelo Callejas M.</h3>
+                            <p style={{ fontSize: '0.9rem', color: 'var(--color-accent)', fontWeight: 700 }}>Soc. Agrícola Las Roldanas LTDA.</p>
+                        </div>
+                        <div style={{ background: 'white', padding: '30px 20px', borderRadius: '16px', boxShadow: '0 4px 15px rgba(0,0,0,0.03)' }}>
+                            <h3 style={{ fontSize: '1.2rem', color: 'var(--color-primary)', marginBottom: '8px' }}>Macarena Silva S.</h3>
+                            <p style={{ fontSize: '0.9rem', color: 'var(--color-accent)', fontWeight: 700 }}>EFlowers</p>
+                        </div>
+                        <div style={{ background: 'white', padding: '30px 20px', borderRadius: '16px', boxShadow: '0 4px 15px rgba(0,0,0,0.03)' }}>
+                            <h3 style={{ fontSize: '1.2rem', color: 'var(--color-primary)', marginBottom: '8px' }}>Inés Espinoza</h3>
+                            <p style={{ fontSize: '0.9rem', color: 'var(--color-accent)', fontWeight: 700 }}>Agrícola Agriflora LTDA.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Banner Institucional Estático */}
             <section style={{ width: '100%', marginTop: '40px', marginBottom: '40px', background: 'var(--color-bg)', display: 'flex', justifyContent: 'center', padding: '0 20px' }}>
                 <div className="banner-institucional" onClick={() => setIsLightboxOpen(true)}>
                     <img 
                         src="/home%20parallax.webp" 
-                        alt="Banner Institucional Petunias" 
+                        alt="Banner AgroPeonías" 
                         style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
                     />
                 </div>
@@ -104,8 +128,8 @@ const Home = () => {
                                 </div>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', borderLeft: '2px solid rgba(0,0,0,0.05)', paddingLeft: '25px' }}>
-                                <p style={{ fontSize: '1.1rem', lineHeight: 1.6, color: 'var(--color-primary)', opacity: 0.8, marginBottom: '15px' }}>Monocromática o Mix de la semana. Vienen cerradas directo desde nuestra cosecha.</p>
-                                <p style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-primary)', letterSpacing: '0.5px' }}>→ Perfecto para decoración masiva.</p>
+                                <p style={{ fontSize: '1.1rem', lineHeight: 1.6, color: 'var(--color-primary)', opacity: 0.8, marginBottom: '15px' }}>Monocromática o Mix de la semana. Vienen cerradas directo desde nuestra cosecha en Romeral.</p>
+                                <p style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-primary)', letterSpacing: '0.5px' }}>→ Perfecto para eventos y decoración masiva.</p>
                             </div>
                         </div>
 
@@ -119,8 +143,8 @@ const Home = () => {
                                 </div>
                             </div>
                             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', borderLeft: '2px solid rgba(0,0,0,0.05)', paddingLeft: '25px' }}>
-                                <p style={{ fontSize: '1.1rem', lineHeight: 1.6, color: 'var(--color-primary)', opacity: 0.8, marginBottom: '15px' }}>Meticulosa selección artesanal variable según la disponibilidad del huerto en el momento.</p>
-                                <p style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-primary)', letterSpacing: '0.5px' }}>→ Perfecto para un detalle en tu hogar.</p>
+                                <p style={{ fontSize: '1.1rem', lineHeight: 1.6, color: 'var(--color-primary)', opacity: 0.8, marginBottom: '15px' }}>Meticulosa selección artesanal variable según la disponibilidad del huerto.</p>
+                                <p style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-primary)', letterSpacing: '0.5px' }}>→ Perfecto para un detalle único en tu hogar.</p>
                             </div>
                         </div>
                     </motion.div>
@@ -129,7 +153,7 @@ const Home = () => {
                         style={{ textAlign: 'center', marginTop: '60px' }}
                         {...homeAnimations}
                     >
-                        <a href="https://wa.me/56992990735" className="btn-pro">Consultar Disponibilidad</a>
+                        <a href="https://wa.me/56942262053" className="btn-pro" target="_blank" rel="noreferrer">Consultar Disponibilidad</a>
                     </motion.div>
                 </div>
             </section>
@@ -161,11 +185,11 @@ const Home = () => {
                             <div style={{ backgroundColor: 'rgba(0, 245, 212, 0.15)', width: '70px', height: '70px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '25px' }}>
                                 <MapPin size={35} color="var(--color-primary)" />
                             </div>
-                            <h3 style={{ fontSize: '1.8rem', color: 'var(--color-primary)', marginBottom: '15px', fontWeight: 700 }}>Retiro en Santiago</h3>
-                            <span style={{ display: 'inline-block', padding: '6px 16px', background: 'rgba(0,0,0,0.05)', color: 'var(--color-primary)', fontSize: '0.85rem', fontWeight: 700, borderRadius: '20px', marginBottom: '25px' }}>Sin Costo Extra</span>
+                            <h3 style={{ fontSize: '1.8rem', color: 'var(--color-primary)', marginBottom: '15px', fontWeight: 700 }}>Venta en Campo</h3>
+                            <span style={{ display: 'inline-block', padding: '6px 16px', background: 'rgba(0,0,0,0.05)', color: 'var(--color-primary)', fontSize: '0.85rem', fontWeight: 700, borderRadius: '20px', marginBottom: '25px' }}>Romeral, Región del Maule</span>
                             
                             <p style={{ color: 'var(--color-text)', opacity: 0.8, lineHeight: 1.6, fontSize: '1.05rem', marginTop: 'auto' }}>
-                                El valor del formato ya incluye el traslado nacional desde nuestro huerto en la Patagonia hasta nuestro punto de distribución oficial en <strong>Las Condes</strong>.
+                                Puedes comprar o retirar directamente en nuestro campo ubicado en <strong>Camino a Romeral km 1, Romeral</strong> previa coordinación.
                             </p>
                         </motion.div>
 

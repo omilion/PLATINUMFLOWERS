@@ -47,8 +47,8 @@ const Hero = () => {
         <motion.img 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            src="/logo%20platinum%20flower%20full%20blanco.webp" 
-            alt="Platinium Flowers" 
+            src="/Logo_AP_Blanco.webp" 
+            alt="AgroPeonías" 
             style={{ 
                 width: '370px', 
                 maxWidth: '85%', 
@@ -57,7 +57,7 @@ const Hero = () => {
             }} 
         />
 
-        {/* H1 sin pretítulo y con palabra destacada con sombra súper difusa para resaltar */}
+        {/* H1 con palabra destacada */}
         <motion.h1 
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
@@ -71,7 +71,7 @@ const Hero = () => {
                 lineHeight: 1.1 
             }}
         >
-            <span style={{ color: '#00f5d4' }}>Peonías</span> de Exportación
+            <span style={{ color: '#00f5d4' }}>Peonías</span> con Identidad, Sofisticación y Elegancia
         </motion.h1>
 
 

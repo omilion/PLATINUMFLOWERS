@@ -42,9 +42,9 @@ const Header = () => {
                         key={isScrolled ? 'v' : 'b'}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        src={isScrolled ? "/logo platinum flower full verde hori.webp" : "/logo platinum flower full blanco hori.webp"}
-                        alt="Platinium Flowers"
-                        style={{ height: '45px', width: 'auto', objectFit: 'contain' }}
+                        src={isScrolled ? "/Logo_AP_Verde.webp" : "/Logo_AP_Blanco.webp"}
+                        alt="AgroPeonías"
+                        style={{ height: '52px', width: 'auto', objectFit: 'contain' }}
                     />
                 </Link>
 

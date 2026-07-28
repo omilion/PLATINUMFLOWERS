@@ -10,22 +10,19 @@ const Footer = () => {
                     {/* Columna 1: 32% - Brand & Social */}
                     <div style={{ padding: '0 20px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
                         <img 
-                            src="/logo platinum flower full blanco hori.webp" 
-                            alt="Platinium Flowers" 
-                            style={{ height: '80px', marginBottom: '25px', width: 'auto' }} 
+                            src="/Logo_AP_Blanco.webp" 
+                            alt="AgroPeonías" 
+                            style={{ height: '75px', marginBottom: '25px', width: 'auto' }} 
                         />
                         <p style={{ opacity: 0.6, fontSize: '0.9rem', lineHeight: 1.8, marginBottom: '30px', fontWeight: 300 }}>
-                            Peonías de exportación cultivadas en el corazón de la Patagonia Chilena. Calidad, fragancia y elegancia para el mundo.
+                            Productores de peonías de la Zona Central de Chile (Romeral, Región del Maule). Identidad, sofisticación y elegancia para Chile y el mundo.
                         </p>
                         <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-                            <motion.a whileHover={{ y: -5 }} href="#" style={{ color: 'white', fontSize: '1.2rem', opacity: 0.6 }}>
-                                <i className="fa-brands fa-instagram"></i>
-                            </motion.a>
-                            <motion.a whileHover={{ y: -5 }} href="#" style={{ color: 'white', fontSize: '1.2rem', opacity: 0.6 }}>
-                                <i className="fa-brands fa-facebook"></i>
-                            </motion.a>
-                            <motion.a whileHover={{ y: -5 }} href="#" style={{ color: 'white', fontSize: '1.2rem', opacity: 0.6 }}>
+                            <motion.a whileHover={{ y: -5 }} href="https://wa.me/56942262053" target="_blank" rel="noreferrer" style={{ color: 'white', fontSize: '1.2rem', opacity: 0.6 }}>
                                 <i className="fa-brands fa-whatsapp"></i>
+                            </motion.a>
+                            <motion.a whileHover={{ y: -5 }} href="mailto:agropeonias@gmail.com" style={{ color: 'white', fontSize: '1.2rem', opacity: 0.6 }}>
+                                <i className="fa-solid fa-envelope"></i>
                             </motion.a>
                         </div>
                     </div>
@@ -52,35 +49,28 @@ const Footer = () => {
                         <h4 className="footer-title">Contacto</h4>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '18px', alignItems: 'flex-start' }}>
                             <div className="contact-item">
-                                <i className="fa-solid fa-location-dot"></i> Camino Villa Ortega s/n Coyhaique _ Región de Aysén. Chile.
+                                <i className="fa-solid fa-location-dot"></i> Camino a Romeral km 1, Romeral. Región del Maule, Chile.
                             </div>
                             <div className="contact-item">
-                                <i className="fa-solid fa-location-dot"></i> Oficina, Comuna Las Condes / Santiago.
+                                <i className="fa-solid fa-phone"></i> +56 9 4226 2053
                             </div>
                             <div className="contact-item">
-                                <i className="fa-solid fa-phone"></i> +569 9 2990735
+                                <i className="fa-solid fa-clock"></i> Lun - Sáb: 10:00 - 20:00 | Dom: 12:00 - 16:00
                             </div>
                             <div className="contact-item">
-                                <i className="fa-solid fa-house"></i> Código Postal: 7550307
-                            </div>
-                            <div className="contact-item">
-                                <i className="fa-solid fa-envelope"></i> ventas@platiniumflowers.com
+                                <i className="fa-solid fa-envelope"></i> agropeonias@gmail.com
                             </div>
                         </div>
                     </div>
 
-                    {/* Columna 4: 25% - ProChile */}
+                    {/* Columna 4: 25% - Exportación */}
                     <div style={{ padding: '0 20px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', textAlign: 'left' }}>
-                        <h4 className="footer-title">Respaldo</h4>
-                        <motion.div whileHover={{ scale: 1.05 }}>
-                            <img 
-                                src="/prochile-logo.png" 
-                                alt="ProChile Logo" 
-                                style={{ height: '70px', width: 'auto', marginBottom: '15px', filter: 'brightness(10)' }} 
-                            />
-                        </motion.div>
-                        <p style={{ opacity: 0.4, fontSize: '0.7rem', fontWeight: 300, letterSpacing: '1px' }}>
-                            Sello de Exportación
+                        <h4 className="footer-title">Cobertura</h4>
+                        <p style={{ opacity: 0.6, fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '15px' }}>
+                            Venta nacional directa en campo, despachos a todo Chile y exportaciones globales.
+                        </p>
+                        <p style={{ opacity: 0.4, fontSize: '0.75rem', fontWeight: 300, letterSpacing: '1px' }}>
+                            Calidad de Exportación
                         </p>
                     </div>
                 </div>
@@ -88,7 +78,7 @@ const Footer = () => {
                 {/* Copyright Area */}
                 <div style={{ marginTop: '80px', paddingTop: '40px', borderTop: '1px solid rgba(255,255,255,0.05)', textAlign: 'center' }}>
                     <p style={{ opacity: 0.3, fontSize: '0.75rem', fontWeight: 300 }}>
-                        &copy; {new Date().getFullYear()} Platinium Flowers. Patagonia, Chile. Todos los derechos reservados.
+                        &copy; {new Date().getFullYear()} AgroPeonías Chile. Todos los derechos reservados.
                     </p>
                 </div>
             </div>
