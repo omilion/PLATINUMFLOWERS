@@ -9,6 +9,16 @@ const CS = 'cs_b9b522441f6a34e704f11dd35f1376c86c94db94';
 // Blog posts oficiales para AgroPeonías Chile (Romeral, Región del Maule)
 const AGROPEONIAS_BLOG_POSTS = [
   {
+    id: 100,
+    date: '2025-12-23T12:00:00',
+    title: { rendered: 'Chile Escala 16 Puestos en Ranking Global de Exportadores de Flores: AgroPeonías en DF Regiones' },
+    excerpt: { rendered: '<p>Macarena Silva, Directora Comercial de AgroPeonías, explica en Diario Financiero (DF Regiones) los desafíos y oportunidades de la floricultura chilena y la apertura de mercados estratégicos como Brasil, EE.UU. y Emiratos Árabes.</p>' },
+    content: { rendered: '<h2>DF Regiones: Florece una nueva industria</h2><p>Silenciosamente, desde los valles de la zona central hasta el sur del país, la floricultura chilena está viviendo un auge histórico. En la reciente temporada, las exportaciones de flores frescas alcanzaron los <strong>US$ 17,3 millones</strong>, lo que representa un crecimiento del 47% respecto al año anterior. Este dinamismo ha permitido a Chile escalar 16 posiciones en la última década, ubicándose en el lugar 30 del ranking mundial de exportadores.</p><blockquote>"Brasil es un gigante que mueve miles de millones anuales en su mercado interno de flores y plantas. Pero, aunque es proteccionista, no pueden producir peonías por clima, lo que nos abre una ventana enorme."<br><small>— Macarena Silva, Directora Comercial de AgroPeonías</small></blockquote><h2>Apertura de Mercados y Desafíos Logísticos</h2><p>La peonía representa el <strong>92,5% del valor exportado</strong> de flores frescas en Chile. Tras un trabajo coordinado entre el SAG, ProChile y la Asociación Gremial de Productores de Peonías (AgroPeonías), se concretó la apertura del mercado brasileño con envíos aéreos a Sao Paulo, sumado a despachos hacia México, Estados Unidos y mercados de alto valor en Medio Oriente como los Emiratos Árabes Unidos (US$ 35,2 por kilo).</p><h2>Logística Crítica</h2><p>Como destaca Macarena Silva en DF Regiones, la logística es el factor clave: mantener la cadena de frío entre 1°C y 3°C asegura que cada ramo llegue con la máxima calidad y frescura desde nuestros campos en la zona central hasta el cliente final.</p>' },
+    _embedded: {
+      'wp:featuredmedia': [{ source_url: '/agropeonias_df_regiones.webp' }]
+    }
+  },
+  {
     id: 101,
     date: '2026-05-15T10:00:00',
     title: { rendered: 'Dormancia y las Horas de Frío en las Peonías' },
