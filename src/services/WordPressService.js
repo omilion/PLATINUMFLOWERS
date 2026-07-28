@@ -14,7 +14,7 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3500',
     regular_price: '3500',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/peonias%20chile%20-%20Peonies.webp' }, { src: '/RAMO%20PEONIAS.webp' }]
+    images: [{ src: '/peonias_chile_peonies.webp' }, { src: '/ramo_peonias.webp' }]
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3800',
     regular_price: '3800',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/RAMO%20PEONIAS.webp' }, { src: '/home%20hero.webp' }]
+    images: [{ src: '/ramo_peonias.webp' }, { src: '/home_hero.webp' }]
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const AGROPEONIAS_PRODUCTS = [
     price: '4000',
     regular_price: '4000',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/CAJA%20PEONIAS.webp' }, { src: '/HERO%20SINGLE%20PRODUCT%20(Grande).webp' }]
+    images: [{ src: '/caja_peonias.webp' }, { src: '/hero_single_product.webp' }]
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3500',
     regular_price: '3500',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/HERO%20SINGLE%20PRODUCT%20(Grande).webp' }]
+    images: [{ src: '/hero_single_product.webp' }]
   },
   {
     id: 5,
@@ -58,7 +58,7 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3600',
     regular_price: '3600',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/RAMO%20PEONIAS.webp' }]
+    images: [{ src: '/ramo_peonias.webp' }]
   },
   {
     id: 6,
@@ -69,7 +69,7 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3700',
     regular_price: '3700',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/home%20hero%202.webp' }]
+    images: [{ src: '/home_hero_2.webp' }]
   },
   {
     id: 7,
@@ -80,7 +80,7 @@ const AGROPEONIAS_PRODUCTS = [
     price: '4200',
     regular_price: '4200',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/peonias%20chile%20-%20Peonies.webp' }]
+    images: [{ src: '/peonias_chile_peonies.webp' }]
   },
   {
     id: 8,
@@ -91,7 +91,7 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3600',
     regular_price: '3600',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/RAMO%20PEONIAS.webp' }]
+    images: [{ src: '/ramo_peonias.webp' }]
   },
   {
     id: 9,
@@ -102,7 +102,7 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3800',
     regular_price: '3800',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/home%20hero%202.webp' }]
+    images: [{ src: '/home_hero_2.webp' }]
   },
   {
     id: 10,
@@ -113,7 +113,7 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3700',
     regular_price: '3700',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/CAJA%20PEONIAS.webp' }]
+    images: [{ src: '/caja_peonias.webp' }]
   },
   {
     id: 11,
@@ -124,7 +124,7 @@ const AGROPEONIAS_PRODUCTS = [
     price: '3600',
     regular_price: '3600',
     categories: [{ id: 1, name: 'Flores de Corte', slug: 'flores-de-corte' }],
-    images: [{ src: '/HERO%20SINGLE%20PRODUCT%20(Grande).webp' }]
+    images: [{ src: '/hero_single_product.webp' }]
   },
   {
     id: 12,
@@ -135,7 +135,7 @@ const AGROPEONIAS_PRODUCTS = [
     price: '7500',
     regular_price: '7500',
     categories: [{ id: 2, name: 'Rizomas', slug: 'rizomas' }],
-    images: [{ src: '/RAMO%20PEONIAS.webp' }]
+    images: [{ src: '/ramo_peonias.webp' }]
   },
   {
     id: 13,
@@ -146,7 +146,7 @@ const AGROPEONIAS_PRODUCTS = [
     price: '7900',
     regular_price: '7900',
     categories: [{ id: 2, name: 'Rizomas', slug: 'rizomas' }],
-    images: [{ src: '/peonias%20chile%20-%20Peonies.webp' }]
+    images: [{ src: '/peonias_chile_peonies.webp' }]
   },
   {
     id: 14,
@@ -157,7 +157,7 @@ const AGROPEONIAS_PRODUCTS = [
     price: '8500',
     regular_price: '8500',
     categories: [{ id: 2, name: 'Rizomas', slug: 'rizomas' }],
-    images: [{ src: '/RAMO%20PEONIAS.webp' }]
+    images: [{ src: '/ramo_peonias.webp' }]
   }
 ];
 
@@ -168,7 +168,7 @@ const AGROPEONIAS_BLOG_POSTS = [
     date: '2026-04-27T12:00:00',
     title: { rendered: 'Primer Seminario sobre Producción de Peonías y Claves para la Postcosecha en Curicó' },
     excerpt: { rendered: '<p>Organizado por AgroPeonías y PeonyLab con la participación de más de 140 productores, este hito liderado por Consuelo Callejas abordó la peonía como flor de lujo y su rol en la Marca País.</p>' },
-    content: { rendered: '<h2>Un Hito para la Floricultura del Valle Central</h2><p>Con la participación de más de <strong>140 asistentes del rubro floricultor</strong> de la región, se realizó en Curicó el <strong>Primer Seminario sobre la Producción de Peonías y Claves para la Postcosecha</strong>, organizado por <strong>AgroPeonías</strong> y PeonyLab.</p><h2>Liderazgo y Gestión Gremial</h2><p>La gestora y coordinadora de este primer gran encuentro fue <strong>Consuelo Callejas</strong>, Empresaria Agrícola y Presidenta de la Asociación Gremial de Peonías de Chile, quien lideró la pauta técnica y comercial ante productores, agrónomos y profesionales del sector en los salones del Hotel Villa El Descanso.</p><figure style="text-align: center; margin: 35px 0;"><img src="/agropeonias_seminario_curico.webp" alt="Consuelo Callejas en el Seminario de Peonías en Curicó" style="max-width: 100%; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);" /><figcaption style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">Consuelo Callejas exponiendo las claves del cultivo y postcosecha ante más de 140 floricultores.</figcaption></figure><h2>La Peonía: Producto de Lujo e Imagen País</h2><p>¿Sabías que más del <strong>90% de las exportaciones de floricultura en Chile corresponden a Peonías</strong>? Durante el seminario se profundizó en el potencial de esta flor de alta gama como embajadora de la Marca País en los mercados más exigentes de Europa, Asia y América.</p><h2>Pauta del Seminario y Ejes Temáticos</h2><ul><li><strong>Peonías y Marca País:</strong> Posicionamiento internacional del producto de lujo chileno.</li><li><strong>Manejo Agronómico:</strong> Optimización de nutrición y rendimiento en huerto.</li><li><strong>Uso de Bioestimulantes:</strong> Estrategias sostenibles para potenciar el vigor radicular y floral.</li><li><strong>Visión Comercial para la Industria:</strong> Apertura de canales mayoristas, banqueteras y floristas.</li><li><strong>Apoyo a la Postcosecha:</strong> Cadena de frío y protocolos de conservación en florero.</li></ul><blockquote>"Estamos desarrollando un producto de lujo, trabajando de la mano para el crecimiento nacional e internacional de esta demandada flor. Uno de nuestros mayores desafíos es darla a conocer fuertemente en nuestro propio país."<br><small>— Consuelo Callejas, Presidenta Asociación Gremial de Peonías</small></blockquote>' },
+    content: { rendered: '<h2>Un Hito para la Floricultura del Valle Central</h2><p>Con la participación de más de <strong>140 asistentes del rubro floricultor</strong> de la región, se realizó en Curicó el <strong>Primer Seminario sobre la Producción de Peonías y Claves para la Postcosecha</strong>, organizado por <strong>AgroPeonías</strong> y PeonyLab.</p><h2>Liderazgo y Gestión Gremial</h2><p>La gestora y coordinadora de este primer gran encuentro fue <strong>Consuelo Callejas</strong>, Empresaria Agrícola y Presidenta de la Asociación Gremial de Peonías de Chile, quien lideró la pauta técnica y comercial ante productores, agrónomos y profesionales del sector en los salones del Hotel Villa El Descanso.</p><figure style="text-align: center; margin: 35px 0;"><img src="/agropeonias_seminario_curico.webp" alt="Consuelo Callejas en el Seminario de Peonías en Curicó" style="max-width: 100%; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);" /><figcaption style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">Consuelo Callejas exponiendo las claves del cultivo y postcosecha ante más de 140 floricultores.</figcaption></figure><h2>La Peonía: Producto de Lujo e Imagen País</h2><p>¿Sabías que más del <strong>90% de las exportaciones de floricultura en Chile corresponden a Peonías</strong>? Durante el seminario se profundizó en el potencial de esta flor de alta gama como embajadora de la Marca País en los mercados más exigentes de Europa, Asia y América.</p><h2>Pauta del Seminario y Ejes Temáticos</h2><ul><li><strong>Peonías y Marca País:</strong> Posicionamiento internacional del producto de lujo chileno.</li><li><strong>Manejo Agronómico:</strong> Optimización de nutrición y rendimiento en huerto.</li><li><strong>Uso de Bioestimulantes:</strong> Estrategias sostenibles para potenciar el vigor radicular y floral.</li><li><strong>Visión Comercial para la Industria:</strong> Apertura de canales mayoristas, banqueteras y floristas.</li><li><strong>Apoyo a la Postcosecha:</strong> Cadena de frío y protocolos de conservación en florero.</li></ul><blockquote>"Estamos desarrollando un producto de lujo, trabajando de la mano para el crecimiento nacional e internacional de esta demandada flor. Uno de nuestros mayores desafíos es darla a conocer fuertelmente en nuestro propio país."<br><small>— Consuelo Callejas, Presidenta Asociación Gremial de Peonías</small></blockquote>' },
     _embedded: {
       'wp:featuredmedia': [{ source_url: '/agropeonias_seminario_curico.webp' }]
     }
@@ -210,7 +210,7 @@ const AGROPEONIAS_BLOG_POSTS = [
     excerpt: { rendered: '<p>Aprende las claves técnicas para seleccionar, ubicar y plantar rizomas de peonía en tu jardín con la orientación adecuada.</p>' },
     content: { rendered: '<h2>La Importancia de los Rizomas</h2><p>Los rizomas son la base subterránea de la peonía. En AgroPeonías cosechamos rizomas sanos y vigorosos en Romeral, listos para ser plantados entre mayo y junio.</p><h3>Consejos de Plantación</h3><ul><li><strong>Orientación Norte:</strong> Asegúrate de que reciban luz solar directa durante el día.</li><li><strong>Profundidad:</strong> Entierra las yemas a no más de 3 a 5 cm de la superficie.</li><li><strong>Drenaje:</strong> Evita el empozamiento de agua para proteger el sistema radicular.</li></ul>' },
     _embedded: {
-      'wp:featuredmedia': [{ source_url: '/RAMO%20PEONIAS.webp' }]
+      'wp:featuredmedia': [{ source_url: '/ramo_peonias.webp' }]
     }
   },
   {
@@ -220,7 +220,7 @@ const AGROPEONIAS_BLOG_POSTS = [
     excerpt: { rendered: '<p>Descubre los secretos profesionales para extender la vida en florero de tus varas de peonía hasta 6 días en tu hogar.</p>' },
     content: { rendered: '<h2>Apertura y Cuidado en Florero</h2><p>Nuestras peonías son cosechadas cuidadosamente en Romeral en el punto ideal de botón. Al recibir tus peonías de corte, sigue estas recomendaciones:</p><h3>Pasos Clave</h3><ol><li>Corta 2 cm del tallo en un ángulo de 45° antes de colocar en agua.</li><li>Agrega agua tibia con una cucharadita de azúcar si deseas acelerar la apertura de los pétalos.</li><li>Mantén el florero en un lugar fresco y cambia el agua cada 2 días agregando unos cubos de hielo.</li></ol>' },
     _embedded: {
-      'wp:featuredmedia': [{ source_url: '/peonias%20chile%20-%20Peonies.webp' }]
+      'wp:featuredmedia': [{ source_url: '/peonias_chile_peonies.webp' }]
     }
   },
   {
@@ -230,7 +230,7 @@ const AGROPEONIAS_BLOG_POSTS = [
     excerpt: { rendered: '<p>Nuestra agrupación de productoras agrícolas impulsa el desarrollo de una floricultura sustentable y de calidad mundial.</p>' },
     content: { rendered: '<h2>Pasión y Tradición Agrícola</h2><p>AgroPeonías reúne la trayectoria de generaciones dedicadas a la tierra en el Valle del Maule. Consuelo Callejas M., Macarena Silva S. e Inés Espinoza lideran este compromiso con la sustentabilidad y el respeto por el medio ambiente.</p><h3>Calidad de Exportación</h3><p>Cada temporada despachamos peonías de corte y rizomas hacia todo Chile y mercados internacionales, posicionando a la floricultura chilena como referente de excelencia.</p>' },
     _embedded: {
-      'wp:featuredmedia': [{ source_url: '/home%20hero.webp' }]
+      'wp:featuredmedia': [{ source_url: '/home_hero.webp' }]
     }
   }
 ];
@@ -264,20 +264,10 @@ const withCache = async (key, fetcher, translatorWrapper) => {
   const lang = localStorage.getItem('agropeonias_lang') || 'es';
   const finalKey = lang === 'en' ? `${key}_en` : key;
 
-  // Involucra borrado automático de cachés antiguas
+  // Limpia cualquier sesión antigua almacenada en el navegador
   try {
-    sessionStorage.removeItem('wp_blog_posts_cache');
-    sessionStorage.removeItem('wc_products_cache');
+    sessionStorage.clear();
   } catch (e) {}
-
-  const cached = sessionStorage.getItem(finalKey);
-  if (cached) {
-    try {
-      return JSON.parse(cached);
-    } catch (e) {
-      console.warn(`Cache error for ${finalKey}:`, e);
-    }
-  }
 
   let data = await fetcher();
   
@@ -285,19 +275,18 @@ const withCache = async (key, fetcher, translatorWrapper) => {
       data = await translatorWrapper(data);
   }
 
-  sessionStorage.setItem(finalKey, JSON.stringify(data));
   return data;
 };
 
 const WordPressService = {
   getProducts: async () => {
-    return withCache('agropeonias_products_v3', async () => {
+    return withCache('agropeonias_products_v4', async () => {
       return AGROPEONIAS_PRODUCTS;
     }, async (data) => data);
   },
 
   getProduct: async (id) => {
-    return withCache(`agropeonias_product_v3_${id}`, async () => {
+    return withCache(`agropeonias_product_v4_${id}`, async () => {
       const numericId = Number(id);
       const product = AGROPEONIAS_PRODUCTS.find(p => p.id === numericId || p.slug === id);
       return product || AGROPEONIAS_PRODUCTS[0];
@@ -305,13 +294,13 @@ const WordPressService = {
   },
 
   getBlogPosts: async () => {
-    return withCache('agropeonias_blog_posts_v3', async () => {
+    return withCache('agropeonias_blog_posts_v4', async () => {
       return AGROPEONIAS_BLOG_POSTS;
     }, async (data) => Promise.all(data.map(tPost)));
   },
 
   getPost: async (id) => {
-    return withCache(`agropeonias_blog_post_v3_${id}`, async () => {
+    return withCache(`agropeonias_blog_post_v4_${id}`, async () => {
       const numericId = Number(id);
       const post = AGROPEONIAS_BLOG_POSTS.find(p => p.id === numericId);
       return post || AGROPEONIAS_BLOG_POSTS[0];
